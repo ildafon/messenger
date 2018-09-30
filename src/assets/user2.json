@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "firstname": "Donald",
+  "secondname": "Knuth",
+  "avatarUrl": "2.jpg",
+  "age":"50",
+  "about":"I love an Maths",
+  "location":"NY"
+}

@@ -1,3 +1,18 @@
-<p>
-  user-list works!
-</p>
+<div class="col-md-6">
+  <p>
+    user-list works!
+  </p>
+  <ul class="users">
+  <a *ngFor="let item of userlist$ | async" [routerLink]="['/users', item.id]" >
+    <div>
+      {{ item.firstname}}
+    </div>
+
+  </a>
+  </ul>
+</div>
+  <router-outlet></router-outlet>
+
+
+
+

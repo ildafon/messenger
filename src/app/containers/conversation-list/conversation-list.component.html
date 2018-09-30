@@ -1,0 +1,9 @@
+<p>
+  conversation-list works!
+</p>
+<ul>
+  <a *ngFor="let item of conversations" [routerLink]="['/conversations', item.id]">
+    {{item.firstname}}
+  </a>
+</ul>
+

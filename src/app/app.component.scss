@@ -1,0 +1,27 @@
+@import '../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+
+
+
+.container {
+  background: rgb(189, 66, 66);
+  min-height: 10rem;
+}
+
+.container-fluid {
+  background: rgb(46, 136, 46);
+  min-height: 10rem;
+}
+
+[class*="col-"] {
+  background: rgb(54, 119, 131);
+  min-height: 3rem;
+}
+
+
+.my-col {
+  @include make-col-ready();
+  @include media-breakpoint-up(sm){
+    @include make-col(4);
+  }
+  background: rgb(207, 219, 39);
+}

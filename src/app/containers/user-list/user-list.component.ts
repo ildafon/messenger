@@ -1,4 +1,9 @@
+import { Observable } from 'rxjs/Observable';
+
+
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { UserListItem } from './../../models/user-list.model';
 
 @Component({
   selector: 'msg-user-list',
@@ -6,10 +11,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+  userlist$: Observable<UserListItem[]>;
 
-  constructor() { }
+  constructor(private service: ApiService) { }
 
   ngOnInit() {
+    this.userlist$ = this.service.getUserList();
   }
 
 }
