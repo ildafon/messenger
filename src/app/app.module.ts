@@ -1,3 +1,4 @@
+import { Conversation } from './models/conversation';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -8,9 +9,11 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './containers/user-list/user-list.component';
 import { UserDetailComponent } from './containers/user-detail/user-detail.component';
 import { ConversationListComponent } from './containers/conversation-list/conversation-list.component';
-
+import { ConversationComponent } from './containers/conversation/conversation.component';
 
 import { ApiService } from './services/api.service';
+import { NotfoundComponent } from './containers/notfound/notfound.component';
+
 
 const routes: Routes = [
   {
@@ -32,11 +35,15 @@ const routes: Routes = [
     path: 'conversations',
     component: ConversationListComponent,
     children: [
-      // {
-      //   path: ':id',
-      //   component:
-      // }
+      {
+        path: ':id',
+        component: ConversationComponent
+      }
     ]
+  },
+  {
+    path: '**',
+    component: NotfoundComponent
   }
 ];
 
@@ -45,7 +52,9 @@ const routes: Routes = [
     AppComponent,
     UserListComponent,
     UserDetailComponent,
-    ConversationListComponent
+    ConversationListComponent,
+    ConversationComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

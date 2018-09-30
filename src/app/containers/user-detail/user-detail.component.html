@@ -1,7 +1,16 @@
-<div class="col-md-6">
-<p>
-  user-detail works!
-</p>
+<div class="container-fluid h-100 ">
+  <div class="row">
+    <div class="col-12">
+<div *ngIf="user" class="card card-inverse">
 
-{{ user | json}}
+  <div class="card-body">
+    <h4 class="card-title">{{user.firstname}} {{user.secondname}}</h4>
+    <p class="card-text">Age: {{user.age}}</p>
+    <p class="card-text">Location: {{user.location}}</p>
+    <p class="card-text">Age: {{user.about}}</p>
+    <a  class="btn btn-primary" (click)="goToChat()">Chat with me</a>
+  </div>
+</div>
+    </div>
+  </div>
 </div>

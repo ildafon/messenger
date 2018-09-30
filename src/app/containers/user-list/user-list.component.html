@@ -1,17 +1,31 @@
-<div class="col-md-6">
-  <p>
-    user-list works!
-  </p>
-  <ul class="users">
-  <a *ngFor="let item of userlist$ | async" [routerLink]="['/users', item.id]" >
-    <div>
-      {{ item.firstname}}
-    </div>
+<div class="container">
+  <div class="d-flex align-items-center row" style="height:20rem;">
+      <div class="col-md-6 ">
+        <ul class="users list-group align-middle">
+          <a *ngFor="let item of userlist$ | async"
+          [routerLink]="['/users', item.id]"
+          routerLinkActive="active"
+          class="list-group-item text-center">
+            <div>
+              {{ item.firstname}}
+            </div>
 
-  </a>
-  </ul>
+          </a>
+        </ul>
+
+      </div>
+        <div class="col-md-6">
+            <router-outlet></router-outlet>
+        </div>
+
+  </div>
 </div>
-  <router-outlet></router-outlet>
+
+
+
+
+
+
 
 
 

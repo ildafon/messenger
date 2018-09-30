@@ -3,7 +3,7 @@ import { UserDetail } from './../../models/user-detail.model';
 import { Observable } from 'rxjs/Observable';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'msg-user-detail',
@@ -16,6 +16,7 @@ export class UserDetailComponent implements OnInit {
   constructor(
     private service: ApiService,
     private route: ActivatedRoute,
+    private router: Router
    ) {}
 
   ngOnInit(): void {
@@ -24,4 +25,7 @@ export class UserDetailComponent implements OnInit {
     .subscribe( user => this.user = user);
   }
 
+  goToChat() {
+    this.router.navigateByUrl(`/conversations/${this.user.id}`);
+  }
 }

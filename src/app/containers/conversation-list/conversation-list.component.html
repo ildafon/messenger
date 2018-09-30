@@ -1,9 +1,20 @@
-<p>
-  conversation-list works!
-</p>
-<ul>
-  <a *ngFor="let item of conversations" [routerLink]="['/conversations', item.id]">
-    {{item.firstname}}
-  </a>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-1">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action text-center " routerLink="/"><i class="fa fa-home fa-lg "></i></a>
+            <a href="#" *ngFor="let item of conversations"
+                class="list-group-item list-group-item-action"
+               [routerLink]="['/conversations', item.id]"
+               routerLinkActive="active">
+                  {{item.firstname}}
+            </a>
+          </div>
+    </div>
+    <div class="col-11 d-flex align-items-center">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
 

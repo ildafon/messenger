@@ -19,7 +19,7 @@ export class ConversationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getConversationList()
-    .subscribe(convs => this.conversations = convs.json());
+    .subscribe(convs => this.conversations = convs);
   }
 
 }
