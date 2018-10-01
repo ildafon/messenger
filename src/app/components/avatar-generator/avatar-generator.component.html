@@ -1,3 +1,8 @@
-<div class="avatar bg-info" data-toggle="tooltip" data-placement="right" title="{{firstName}} {{secondName}}">
+<!-- <div class="avatar bg-info" data-toggle="tooltip" data-placement="right" title="{{firstName}} {{secondName}}">
   {{initials | uppercase }}
+</div> -->
+
+<div class="avatar bg-info" data-toggle="tooltip" data-placement="right" title="{{firstName}} {{secondName}}">
+  <img *ngIf="conversation.avatarUrl; else noAvatar" src="assets/{{conversation.avatarUrl}}" [alt]="firstName">
+  <ng-template #noAvatar>{{initials | uppercase }}</ng-template>
 </div>
