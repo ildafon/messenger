@@ -13,6 +13,7 @@ import { ConversationComponent } from './containers/conversation/conversation.co
 
 import { ApiService } from './services/api.service';
 import { NotfoundComponent } from './containers/notfound/notfound.component';
+import { AvatarGeneratorComponent } from './components/avatar-generator/avatar-generator.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
     UserDetailComponent,
     ConversationListComponent,
     ConversationComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    AvatarGeneratorComponent
   ],
   imports: [
     BrowserModule,
