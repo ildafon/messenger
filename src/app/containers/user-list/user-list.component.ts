@@ -3,7 +3,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { UserListPositionService } from './../../services/user-list-position.service';
 import { UserListItem } from './../../models/user-list.model';
+import { Router, NavigationStart} from '@angular/router';
 
 @Component({
   selector: 'msg-user-list',
@@ -12,11 +14,18 @@ import { UserListItem } from './../../models/user-list.model';
 })
 export class UserListComponent implements OnInit {
   userlist$: Observable<UserListItem[]>;
+  listPositionCenter$: Observable<boolean>;
 
-  constructor(private service: ApiService) { }
+  constructor(
+    private service: ApiService,
+    private router: Router,
+    private userListService: UserListPositionService
+    ) {
+  }
 
   ngOnInit() {
     this.userlist$ = this.service.getUserList();
+    this.listPositionCenter$ = this.userListService.positionCenter;
   }
 
 }

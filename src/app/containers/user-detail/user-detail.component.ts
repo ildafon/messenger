@@ -1,9 +1,10 @@
-import 'rxjs/add/operator/switchMap';
 import { UserDetail } from './../../models/user-detail.model';
 import { Observable } from 'rxjs/Observable';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { UserListPositionService } from './../../services/user-list-position.service';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'msg-user-detail',
@@ -16,13 +17,16 @@ export class UserDetailComponent implements OnInit {
   constructor(
     private service: ApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private userListService: UserListPositionService
    ) {}
 
   ngOnInit(): void {
     this.route.paramMap
     .switchMap((params: ParamMap) => this.service.getUserDetail(params.get('id')))
     .subscribe( user => this.user = user);
+
+    this.userListService.shiftLeft();
   }
 
   goToChat() {

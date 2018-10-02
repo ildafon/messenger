@@ -1,22 +1,24 @@
 <div class="container">
-  <div class="d-flex align-items-center row" style="height:20rem;">
-      <div class="col-md-6 ">
+  <div class="row" style="height:20rem;">
+      <div [class.offset-3]="listPositionCenter$ | async" class="col-6">
         <ul class="users list-group align-middle">
           <a *ngFor="let item of userlist$ | async"
           [routerLink]="['/users', item.id]"
           routerLinkActive="active"
           class="list-group-item text-center">
             <div>
-              {{ item.firstname}}
+              {{ item.firstname}} {{ item.secondname}}
             </div>
 
           </a>
         </ul>
 
       </div>
-        <div class="col-md-6">
-            <router-outlet></router-outlet>
-        </div>
+      <div class="col-6">
+          <router-outlet></router-outlet>
+      </div>
+
+
 
   </div>
 </div>

@@ -1,8 +1,8 @@
-import { Conversation } from './models/conversation';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanDeactivate } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -11,10 +11,16 @@ import { UserDetailComponent } from './containers/user-detail/user-detail.compon
 import { ConversationListComponent } from './containers/conversation-list/conversation-list.component';
 import { ConversationComponent } from './containers/conversation/conversation.component';
 
-import { ApiService } from './services/api.service';
+
 import { NotfoundComponent } from './containers/notfound/notfound.component';
 import { AvatarGeneratorComponent } from './components/avatar-generator/avatar-generator.component';
 
+
+import { ApiService } from './services/api.service';
+import { UserListPositionService } from './services/user-list-position.service';
+
+import { ListPositionCenter } from './guards/list-position-center.guard';
+import { ListPositionLeft } from './guards/list-position-left.guard';
 
 const routes: Routes = [
   {
@@ -28,6 +34,8 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
+        canActivate: [ListPositionLeft],
+        canDeactivate: [ListPositionCenter],
         component: UserDetailComponent
       }
     ]
@@ -63,7 +71,12 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService,
+    UserListPositionService,
+    ListPositionCenter,
+    ListPositionLeft
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
