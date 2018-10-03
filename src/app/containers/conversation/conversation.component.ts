@@ -22,7 +22,7 @@ export class ConversationComponent implements OnInit {
     this.route.paramMap
     .switchMap( (params: ParamMap ) => {
       this.conversationId = params.get('id');
-      return this.service.getConversationHistory(this.conversationId)
+      return this.service.getConversationHistory(this.conversationId);
     })
     .subscribe( messages => this.messages = messages);
 
