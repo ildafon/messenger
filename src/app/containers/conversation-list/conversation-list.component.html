@@ -1,16 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-
-            <!-- <a href="#"  routerLink="/"><i class="fa fa-home fa-lg "></i></a> -->
-
+<div class="container"  style="height: 800px">
+  <div class="row h-100">
+    <div class="list-group col-1 d-flex flex-column align-items-center  bg-dark">
             <a href="#" *ngFor="let item of conversations$ | async"
+                routerLinkActive="active"
+                class="list-group-item bg-dark"
                [routerLink]="['/conversations', item.id]">
                  <msg-avatar-generator [conversation]="item"></msg-avatar-generator>
             </a>
 
     </div>
-    <div class="col-6">
+    <div class="col-11">
         <router-outlet></router-outlet>
     </div>
 

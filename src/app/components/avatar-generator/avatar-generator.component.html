@@ -1,9 +1,6 @@
-<!-- <div class="avatar bg-info" data-toggle="tooltip" data-placement="right" title="{{firstName}} {{secondName}}">
-  {{initials | uppercase }}
-</div> -->
- <!-- https://stackoverflow.com/questions/49897720/how-to-display-first-letter-of-name-instead-of-image-in-matlistavatar -->
 
-<div class="avatar bg-info" data-toggle="tooltip" data-placement="right" title="{{firstName}} {{secondName}}">
+
+<div class="avatar bg-dark" data-toggle="tooltip" data-placement="right" title="{{firstName}} {{secondName}}">
   <img *ngIf="conversation.avatarUrl; else noAvatar" src="assets/{{conversation.avatarUrl}}" [alt]="firstName">
   <ng-template #noAvatar>{{initials | uppercase }}</ng-template>
 </div>

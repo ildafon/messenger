@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row" style="height:20rem;">
       <div [class.offset-3]="listPositionCenter$ | async" class="col-6">
@@ -6,9 +7,7 @@
           [routerLink]="['/users', item.id]"
           routerLinkActive="active"
           class="list-group-item text-center">
-            <div>
               {{ item.firstname}} {{ item.secondname}}
-            </div>
 
           </a>
         </ul>
