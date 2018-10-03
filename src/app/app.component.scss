@@ -2,6 +2,16 @@
 
 
 
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+
 .container {
   background: rgb(189, 66, 66);
   min-height: 10rem;

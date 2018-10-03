@@ -1,0 +1,13 @@
+<nav class="navbar navbar-light">
+  <div class="container bg-dark">
+    <a class="navbar-navbrand  p-2 font-weight-bold text-uppercase text-warning">Messanger</a>
+    <ul class="nav navbar-nav">
+      <li *ngIf="!isAuthenticated" class="nav-item">
+        <button type="button" class="btn btn-light bg-dark text-light my-2 mr-4">Login</button>
+      </li>
+      <li *ngIf="isAuthenticated" class="nav-item">
+          <button type="button" class="btn btn-light bg-dark text-light my-2 mr-4">Logout</button>
+        </li>
+    </ul>
+  </div>
+</nav>

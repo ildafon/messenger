@@ -32,6 +32,8 @@ import { UserListPositionService } from './services/user-list-position.service';
 
 import { ListPositionCenter } from './guards/list-position-center.guard';
 import { ListPositionLeft } from './guards/list-position-left.guard';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   {
@@ -75,7 +77,9 @@ const routes: Routes = [
     ConversationListComponent,
     ConversationComponent,
     NotfoundComponent,
-    AvatarGeneratorComponent
+    AvatarGeneratorComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -95,6 +99,7 @@ const routes: Routes = [
     ListPositionCenter,
     ListPositionLeft
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [HeaderComponent, FooterComponent]
 })
 export class AppModule { }
