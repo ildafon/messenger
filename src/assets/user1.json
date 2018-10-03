@@ -1,8 +1,8 @@
 {
-  "id": "1",
+  "id": "101",
   "firstname": "Edsger",
   "secondname": "Dijkstra",
-  "avatarUrl": "1.jpg",
+  "avatarUrl": "ed.jpg",
   "age":"50",
   "about":"I love an algoritms",
   "location":"Tokio"

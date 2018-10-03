@@ -1,26 +1,2 @@
-[
-  {
-    "id": "1",
-    "firstname": "Edsger",
-    "secondname": "Dijkstra",
-    "avatarUrl": "1.jpg"
-  },
-  {
-    "id": "2",
-    "firstname": "Donald",
-    "secondname": "Knuth",
-    "avatarUrl": "2.jpg"
-  },
-  {
-    "id": "3",
-    "firstname": "Alan",
-    "secondname": "Turing",
-    "avatarUrl": "3.jpg"
-  },
-  {
-    "id": "4",
-    "firstname": "Grace",
-    "secondname": "Hopper",
-    "avatarUrl": "4.jpg"
-  }
-]
+[ { "id": "101"},{"id": "102"},{"id": "103"},{"id": "104"}]
+

@@ -1,8 +1,8 @@
 {
-  "id": "2",
+  "id": "102",
   "firstname": "Donald",
   "secondname": "Knuth",
-  "avatarUrl": "2.jpg",
+  "avatarUrl": "",
   "age":"50",
   "about":"I love an Maths",
   "location":"NY"
