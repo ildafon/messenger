@@ -28,4 +28,3 @@ export type UserActions =
   LoadAction
 | LoadCompleteAction
 | SelectAction;
-

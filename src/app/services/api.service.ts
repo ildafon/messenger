@@ -1,42 +1,37 @@
-
-
-
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { UserId } from './../models/user-list.model';
-import { UserDetail } from './../models/user-detail.model';
-import { Conversation } from '../models/conversation';
-import { Message } from './../models/message';
+import { User } from './../models/user.model';
+import { Message } from './../models/message.model';
 
 @Injectable()
 export class ApiService {
 
   constructor(private http: Http) {}
 
-  public getUserIds(): Observable<UserId[]> {
+  public getUserList(): Observable<string[]> {
     return this.http.get('/assets/user-list.json')
                         .map((res: Response) => res.json())
                         .catch(this.handleError );
   }
 
-  public getUserDetail(id: string): Observable<UserDetail> {
+  public getUserDetail(id: string): Observable<User> {
     return this.http.get(`/assets/user${id}.json`)
                         .map((res: Response) => res.json())
                         .catch(this.handleError );
   }
 
-  public getConversationList(): Observable<Conversation[]> {
+  public getConversationList(): Observable<string[]> {
     return this.http.get(`/assets/conversation-list.json`)
                         .map((res: Response) => res.json())
                         .catch(this.handleError );
   }
 
-  public getConversationHistory(id: string): Observable<Message[]> {
-    return this.http.get(`/assets/conversation${id}.json`)
+  public getMessages(): Observable<Message[]> {
+    return this.http.get(`/assets/messages.json`)
                         .map((res: Response) => res.json())
                         .catch(this.handleError );
   }
