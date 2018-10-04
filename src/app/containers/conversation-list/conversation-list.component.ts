@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
-import { Conversation } from '../../models/conversation';
+import { Conversation } from '../../models/conversation.model';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 

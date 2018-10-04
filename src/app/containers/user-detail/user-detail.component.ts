@@ -1,4 +1,4 @@
-import { UserDetail } from './../../models/user-detail.model';
+import { UserDetail } from '../../models/user.model';
 import { Observable } from 'rxjs/Observable';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';

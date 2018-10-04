@@ -1,4 +1,4 @@
-import { Conversation } from './../../models/conversation';
+import { Conversation } from '../../models/conversation.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

@@ -1,7 +1,7 @@
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { Message} from './../../models/message';
+import { Message} from '../../models/message.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
