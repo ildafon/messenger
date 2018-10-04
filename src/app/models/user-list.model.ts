@@ -4,3 +4,7 @@ export interface UserListItem {
   secondname: string;
   avatarUrl: string;
 }
+
+export interface UserId {
+  id: string;
+}

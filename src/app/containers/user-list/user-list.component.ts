@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { UserListPositionService } from './../../services/user-list-position.service';
-import { UserListItem } from './../../models/user-list.model';
+import { UserListItem, UserId } from './../../models/user-list.model';
 import { Router, NavigationStart} from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ import { Router, NavigationStart} from '@angular/router';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  userlist$: Observable<UserListItem[]>;
+  userlist$: Observable<UserId[]>;
   listPositionCenter$: Observable<boolean>;
 
   constructor(
@@ -24,7 +24,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userlist$ = this.service.getUserList();
+    this.userlist$ = this.service.getUserIds();
     this.listPositionCenter$ = this.userListService.positionCenter;
   }
 

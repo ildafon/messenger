@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { UserListItem } from './../models/user-list.model';
+import { UserId } from './../models/user-list.model';
 import { UserDetail } from './../models/user-detail.model';
 import { Conversation } from '../models/conversation';
 import { Message } from './../models/message';
@@ -17,7 +17,7 @@ export class ApiService {
 
   constructor(private http: Http) {}
 
-  public getUserList(): Observable<UserListItem[]> {
+  public getUserIds(): Observable<UserId[]> {
     return this.http.get('/assets/user-list.json')
                         .map((res: Response) => res.json())
                         .catch(this.handleError );
