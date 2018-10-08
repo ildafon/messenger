@@ -37,10 +37,10 @@ import { environment } from './../environments/environment';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+
     StoreModule.provideStore(reducer),
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-
     EffectsModule.run(UsersEffects)
   ],
   providers: [ApiService],

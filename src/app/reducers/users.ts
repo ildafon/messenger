@@ -47,6 +47,16 @@ export function reducer( state = InitialState, action: users.Actions): State {
       };
     }
 
+    case users.SELECT: {
+      return {
+        updatedUsersIds: state.updatedUsersIds,
+        entities: state.entities,
+        selectedUserId: action.payload,
+        isFetching: state.isFetching,
+        fetched: state.fetched
+      };
+    }
+
     default: {
       return state;
     }
