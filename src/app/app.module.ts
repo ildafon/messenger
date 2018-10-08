@@ -1,3 +1,5 @@
+
+import { HttpModule } from '@angular/http';
 import { CommonModule} from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,8 +18,11 @@ import { AppComponent } from './app.component';
 
 import { ApiService } from './services/api.service';
 
+import { UsersEffects } from './effects/users';
+
 import { routes } from './routes';
 import { reducer } from './reducers';
+
 import { environment } from './../environments/environment';
 
 
@@ -28,12 +33,15 @@ import { environment } from './../environments/environment';
   ],
   imports: [
     CommonModule,
+    HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     StoreModule.provideStore(reducer),
     RouterStoreModule.connectRouter(),
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
+    EffectsModule.run(UsersEffects)
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
