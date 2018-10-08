@@ -4,6 +4,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
+
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
@@ -27,6 +28,19 @@ export class UsersEffects {
       .map(res => new users.FetchCompleteAction(res))
       .catch(() => of(new users.FetchCompleteAction([])));
   });
+
+  @Effect()
+  retrieve$: Observable<Action> = this.actions$
+  .ofType(users.RETRIEVE_USER)
+  .map(toPayload)
+  .switchMap( (query) => {
+
+    return this.api.retrieveUser(query)
+      .map(res => new users.RetrieveUserSuccessAction(res))
+      .catch(() => of(new users.RetrieveUserFailAction('error')));
+  });
+
+
 
   constructor(private actions$: Actions, private api: ApiService) {}
 }

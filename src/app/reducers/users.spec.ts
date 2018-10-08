@@ -1,6 +1,6 @@
 import { reducer } from './users';
 import * as fromUsers from './users';
-import { SelectAction } from './../actions/users.actions';
+import { SelectAction, RetrieveUserAction } from './../actions/users.actions';
 import { User } from '../models/user.model';
 
 
@@ -23,5 +23,7 @@ describe('UsersReducer', () => {
       expect(result.selectedUserId).toBe('1');
     });
   });
+
+
 });
 
