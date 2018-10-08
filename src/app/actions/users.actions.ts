@@ -1,15 +1,21 @@
 import { Action } from '@ngrx/store';
 
+import { User } from './../models/user.model';
 
-export const FEATCH = '[Users] Fetch';
-export const FEATCH_COMPLETE = '[Users] Fetch Complete';
+export const FETCH = '[Users] Fetch';
+export const FETCH_COMPLETE = '[Users] Fetch Complete';
 
-export class FeatchAction  implements Action {
-  readonly type = FEATCH;
+
+export class FetchAction  implements Action {
+  readonly type = FETCH;
 }
 
-export class FeatchCompleteAction implements Action {
-  readonly type = FEATCH_COMPLETE;
+export class FetchCompleteAction implements Action {
+  readonly type = FETCH_COMPLETE;
 
   constructor (public payload: User[]) {}
 }
+
+export type Actions
+= FetchAction
+| FetchCompleteAction;
