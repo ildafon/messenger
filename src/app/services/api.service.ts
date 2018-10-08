@@ -14,7 +14,13 @@ export class ApiService {
   constructor(private http: Http) { }
 
   fetchUsers(): Observable<User[]> {
-    return this.http.get(`${this.apiUrl}/github-users.json`)
+    return this.http.get(`${this.apiUrl}github-users.json`)
     .map(res => res.json() || []);
+  }
+
+
+  retrieveUser(id: string): Observable<User> {
+    return this.http.get(`${this.apiUrl}user-${id}.json`)
+    .map(res => res.json());
   }
 }
