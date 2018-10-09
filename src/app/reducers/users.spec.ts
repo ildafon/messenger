@@ -59,7 +59,7 @@ describe('UsersReducer', () => {
 
     function existingUsers(action) {
       const user1 = {login: 'user1', avatarUrl: 'www1'} as User;
-      const user2 = {login: 'user2', avatarUrl: 'www2'} as User;
+      const user2 = {login: 'user2', avatarUrl: 'new_www2'} as User;
       const user3 = {login: 'user3', avatarUrl: 'www3'} as User;
       const createAction = new action([user1, user2, user3]);
 
@@ -77,7 +77,7 @@ describe('UsersReducer', () => {
         retrievedUsersIds: ['user1'],
         entities: {
           user1: {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'},
-          user2: {login: 'user2', avatarUrl: 'www2'},
+          user2: {login: 'user2', avatarUrl: 'new_www2'},
           user3: {login: 'user3', avatarUrl: 'www3'}
         },
         selectedUserId: null,
@@ -118,7 +118,35 @@ describe('UsersReducer', () => {
 
 
 
-    function existingUsers(action) {
+    function existingUser(action) {
+      const user1 = {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'} as User;
+      const createAction = new action(user1);
+
+      const initial = {
+        retrievedUsersIds: ['user1'],
+        entities: {
+          user1: {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'},
+          user2: {login: 'user2', avatarUrl: 'www2'}
+        },
+        selectedUserId: null,
+        isFetching: false
+      };
+
+      const expectedResult = {
+        retrievedUsersIds: ['user1'],
+        entities: {
+          user1: {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'},
+          user2: {login: 'user2', avatarUrl: 'www2'}
+        },
+        selectedUserId: null,
+        isFetching: false
+      };
+
+      const result = reducer(initial, createAction);
+      expect(result).toEqual(expectedResult);
+    }
+
+    function updateUser(action) {
       const user1 = {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'} as User;
       const createAction = new action(user1);
 
@@ -146,8 +174,14 @@ describe('UsersReducer', () => {
       expect(result).toEqual(expectedResult);
     }
 
+
     it('should update particular user if user exists', () => {
-      existingUsers(RetrieveUserSuccessAction);
+      existingUser(RetrieveUserSuccessAction);
+    });
+    it('should update particular user if user exists', () => {
+      updateUser(RetrieveUserSuccessAction);
+    });
+    it('should insert particular user if user not exists', () => {
       noExistingUsers(RetrieveUserSuccessAction);
     });
   });
