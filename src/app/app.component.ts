@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-import * as fromRoot from './reducers';
-import * as users from './actions/users.actions';
+// import { Store } from '@ngrx/store';
+// import * as fromRoot from './reducers';
+// import * as users from './actions/users.actions';
 
 @Component({
   selector: 'msg-root',
@@ -11,8 +11,10 @@ import * as users from './actions/users.actions';
 })
 export class AppComponent  {
   title = 'msg';
-  constructor (private store: Store<fromRoot.State>) {
-    store.dispatch(new users.FetchAction());
-    store.dispatch(new users.RetrieveUserAction('ry'));
+  constructor (
+    // private store: Store<fromRoot.State>
+    ) {
+    // store.dispatch(new users.FetchAction());
+    // store.dispatch(new users.RetrieveUserAction('ry'));
   }
 }
