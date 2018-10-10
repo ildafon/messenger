@@ -186,5 +186,41 @@ describe('UsersReducer', () => {
     });
   });
 
+  describe('Selectors', () => {
+
+    const state = {
+      retrievedUsersIds: ['user1', 'user2'],
+      entities: {
+        user1: {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'},
+        user2: {login: 'user2', avatarUrl: 'www2', name: 'User2', location: 'B'},
+        user3: {login: 'user3', avatarUrl: 'www3'}
+      },
+      selectedUserId: 'user2',
+      isFetching: false
+    };
+
+    describe('getEntities', () => {
+      it('should return entities', () => {
+        const result = fromUsers.getEntities(state);
+        expect(result).toBe(state.entities);
+      });
+    });
+
+    describe('getRetrievedIds', () => {
+      it('should return retrievedUsers Ids', () => {
+        const result = fromUsers.getRetrievedIds(state);
+        expect(result).toBe(state.retrievedUsersIds);
+      });
+    });
+
+    describe('getSelectedId', () => {
+      it('should return selected Ids', () => {
+        const result = fromUsers.getSelectedId(state);
+        expect(result).toBe(state.selectedUserId);
+      });
+    });
+
+  });
+
 });
 

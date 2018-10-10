@@ -29,3 +29,12 @@ export function reducer(state: any, action: any) {
     return developmentReducer(state, action);
   }
 }
+
+export const getUsersState = (state: State) => state.users;
+export const getRetrievedUserIds = createSelector(getUsersState, fromUsers.getRetrievedIds);
+export const getSelectedUserId = createSelector(getUsersState, fromUsers.getSelectedId);
+
+
+export const alreadyRetrieved = createSelector(getRetrievedUserIds, getSelectedUserId, (ids, selected) => {
+  return ids.indexOf(selected) > -1;
+});

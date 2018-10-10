@@ -1,8 +1,6 @@
-import { RETRIEVE_USER_SUCCESS } from './../actions/users.actions';
 import { createSelector} from 'reselect';
 import { User } from '../models/user.model';
 import * as users from '../actions/users.actions';
-import { debug } from 'util';
 
 export interface State {
   retrievedUsersIds: string[];
@@ -83,3 +81,9 @@ export function reducer( state = InitialState, action: users.Actions): State {
     }
   }
 }
+
+export const getEntities = (state: State) => state.entities;
+
+export const getRetrievedIds = (state: State) => state.retrievedUsersIds;
+
+export const getSelectedId = (state: State) => state.selectedUserId;
