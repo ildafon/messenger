@@ -174,6 +174,32 @@ describe('UsersReducer', () => {
       expect(result).toEqual(expectedResult);
     }
 
+    function afterRetrieveUserAction(action) {
+      const user1 = {login: 'user1', avatarUrl: 'www1', name: 'NewNameUser1', location: 'A'} as User;
+      const createAction = new action(user1);
+
+      const initial = {
+        retrievedUsersIds: [],
+        entities: {
+          user2: {login: 'user2', avatarUrl: 'www2'}
+        },
+        selectedUserId: null,
+        isFetching: false
+      };
+
+      const expectedResult = {
+        retrievedUsersIds: ['user1'],
+        entities: {
+          user1: {login: 'user1', avatarUrl: 'www1', name: 'NewNameUser1', location: 'A'},
+          user2: {login: 'user2', avatarUrl: 'www2'}
+        },
+        selectedUserId: null,
+        isFetching: false
+      };
+
+      const result = reducer(initial, createAction);
+      expect(result).toEqual(expectedResult);
+    }
 
     it('should update particular user if user exists', () => {
       existingUser(RetrieveUserSuccessAction);
@@ -184,7 +210,44 @@ describe('UsersReducer', () => {
     it('should insert particular user if user not exists', () => {
       noExistingUsers(RetrieveUserSuccessAction);
     });
+    it('should update particular user entity  if user id no in retrievedIds', () => {
+      afterRetrieveUserAction(RetrieveUserSuccessAction);
+    });
   });
+
+
+  describe('RETRIEVE_USER', () => {
+    function existingUsers(action) {
+
+      const createAction = new action('user1');
+      const initial = {
+        retrievedUsersIds: ['user1', 'user2'],
+        entities: {
+          user1: {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'},
+          user2: {login: 'user2', avatarUrl: 'www2', name: 'User2', location: 'B'}
+        },
+        selectedUserId: null,
+        isFetching: false
+      };
+
+
+      const expectedResult = {
+        retrievedUsersIds: ['user2'],
+        entities: {
+          user2: {login: 'user2', avatarUrl: 'www2', name: 'User2', location: 'B'}
+        },
+        selectedUserId: null,
+        isFetching: false
+      };
+
+      const result = reducer(initial, createAction);
+      expect(result).toEqual(expectedResult);
+    }
+    it('should remove particular user id from retrevedIds', () => {
+      existingUsers(RetrieveUserAction);
+    });
+  });
+
 
   describe('Selectors', () => {
 
@@ -210,6 +273,13 @@ describe('UsersReducer', () => {
       it('should return retrievedUsers Ids', () => {
         const result = fromUsers.getRetrievedIds(state);
         expect(result).toBe(state.retrievedUsersIds);
+      });
+    });
+
+    describe('getSelectedId', () => {
+      it('should return selected Ids', () => {
+        const result = fromUsers.getSelectedId(state);
+        expect(result).toBe(state.selectedUserId);
       });
     });
 

@@ -76,6 +76,17 @@ export function reducer( state = InitialState, action: users.Actions): State {
       };
     }
 
+    case users.RETRIEVE_USER: {
+      const userIdToRetrieve = action.payload;
+      const { [userIdToRetrieve]: value, ...without} = state.entities;
+      return {
+        retrievedUsersIds: state.retrievedUsersIds.filter( id => id !== userIdToRetrieve ),
+        entities: without,
+        selectedUserId: state.selectedUserId,
+        isFetching: state.isFetching
+      };
+    }
+
     default: {
       return state;
     }

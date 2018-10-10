@@ -1,3 +1,4 @@
+
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
@@ -5,6 +6,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/withLatestFrom';
+import 'rxjs/add/operator/mapTo';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
@@ -33,29 +35,27 @@ export class UsersEffects {
   });
 
   @Effect()
-  retrieve$: Observable<Action> = this.actions$
-  .ofType(users.RETRIEVE_USER)
+  select$ = this.actions$
+  .ofType(users.SELECT)
   .map(toPayload)
-  .switchMap( (query) => {
-
+  .withLatestFrom(this.store.select(fromRoot.alreadyRetrieved))
+  .switchMap( ([query, alreadyRetrieved]) => {
+    if (alreadyRetrieved) {
+      return empty();
+    } else {
     return this.api.retrieveUser(query)
       .map(res => new users.RetrieveUserSuccessAction(res))
       .catch(() => of(new users.RetrieveUserFailAction('error')));
+    }
   });
 
   @Effect()
-  select$: Observable<Action> = this.actions$
-    .ofType(users.SELECT)
-    .map(toPayload)
-    .withLatestFrom(this.store.select(fromRoot.alreadyRetrieved))
-    .map(([userId, isRetrieved]) => {
-      if (isRetrieved) {
-        return new users.RetrieveUserAction('');
-      } else {
-        return new users.RetrieveUserAction(userId);
-      }
-    });
-
+  retrieve$ = this.actions$
+  .ofType(users.RETRIEVE_USER)
+  .map( action => action.payload )
+  .map( payload => {
+    return new users.SelectAction(payload);
+  });
 
 
   constructor(
