@@ -8,18 +8,21 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 import * as fromUsers from './users';
 import * as fromMessages from './messages';
+import * as fromAuth from './auth';
 
 
 export interface State {
-  users: fromUsers.State;
-  messages: fromMessages.State;
-  router: fromRouter.RouterState;
+  users:      fromUsers.State;
+  messages:   fromMessages.State;
+  auth:       fromAuth.State;
+  router:     fromRouter.RouterState;
 }
 
 const reducers = {
-  users: fromUsers.reducer,
+  users:    fromUsers.reducer,
   messages: fromMessages.reducer,
-  router: fromRouter.routerReducer
+  auth:     fromAuth.reducer,
+  router:   fromRouter.routerReducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);

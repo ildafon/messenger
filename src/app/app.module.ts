@@ -20,6 +20,7 @@ import { ApiService } from './services/api.service';
 
 import { UsersEffects } from './effects/users';
 import { MessagesEffects } from './effects/messages';
+import { AuthEffects } from './effects/auth';
 
 import { routes } from './routes';
 import { reducer } from './reducers';
@@ -43,7 +44,8 @@ import { environment } from './../environments/environment';
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UsersEffects),
-    EffectsModule.run(MessagesEffects)
+    EffectsModule.run(MessagesEffects),
+    EffectsModule.run(AuthEffects)
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
