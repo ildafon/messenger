@@ -12,10 +12,10 @@ import * as users from './actions/users.actions';
 export class AppComponent  {
   title = 'msg';
   constructor (
-    private store: Store<fromRoot.State>
+//    private store: Store<fromRoot.State>
     ) {
-    // store.dispatch(new users.FetchAction());
-      store.dispatch(new users.RetrieveUserAction('ry'));
-    // store.dispatch(new users.SelectAction('ry'));
+//      store.dispatch(new users.FetchAction());
+//      store.dispatch(new users.RetrieveUserAction('ry'));
+//      store.dispatch(new users.SelectAction('ry'));
   }
 }

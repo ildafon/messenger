@@ -144,4 +144,41 @@ const id = 'tomtt';
       });
   });
 
+  describe('fetchMessages', () => {
+    const messages = [
+      {
+        'id': '1001',
+        'author': 'abhay',
+        'text': ' შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას',
+        'conversation': 'abhay',
+        'createdAt': '20-09-2018 12:20:34'
+      },
+      {
+        'id': '1002',
+        'author': 'ry',
+        'text': 'იტყვებია ხოლმე. შედეგად, ტექსტი ჩვეულებრივ ინგლისურს გავს, მისი წაითხვა კი შეუძლებელია. დღეს უამრავი პერსონალური საგამ',
+        'conversation': 'abhay',
+        'createdAt': '20-09-2018 12:20:35'
+      }
+    ];
+    it('should call the fetch messages api and return the fetch results', (done) => {
+      backend.connections.subscribe((connection: MockConnection) => {
+        const options = new ResponseOptions({
+          body: JSON.stringify(messages)
+        });
+        connection.mockRespond(new Response(options));
+        expect(connection.request.method).toEqual(RequestMethod.Get);
+        expect(connection.request.url).toEqual(`http://localhost:4200/assets/messages.json`);
+      });
+
+      service
+        .fetchMessages()
+        .subscribe((res) => {
+          expect(res).toEqual(messages);
+          done();
+        });
+    });
+
+  });
+
 });
