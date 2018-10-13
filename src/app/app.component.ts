@@ -1,24 +1,31 @@
-
-import { Component } from '@angular/core';
-
+import { getMessagesOfSelectedUser } from './reducers/index';
+import { Observable } from 'rxjs/Observable';
+import {User, Message} from './models';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from './reducers';
 import * as users from './actions/users.actions';
 import * as messages from './actions/messages.actions';
-import { LoginAction } from './actions/auth';
+
 @Component({
   selector: 'msg-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent  {
-  title = 'msg';
+export class AppComponent  implements OnInit {
+  value$: Observable<User>;
   constructor (
    private store: Store<fromRoot.State>
     ) {
-     store.dispatch(new LoginAction);
-     store.dispatch(new users.FetchAction);
-     store.dispatch(new messages.FetchMessagesAction());
+    store.dispatch(new users.CurrentUserAction('ildafon'));
+    store.dispatch(new users.FetchAction);
+    store.dispatch(new messages.FetchMessagesAction());
+  }
+
+  ngOnInit() {
+    this.value$ = this.store.select(fromRoot.getAuthorOfMessage('ry'));
 
   }
+
+
 }

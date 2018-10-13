@@ -3,15 +3,19 @@ import { Action } from '@ngrx/store';
 
 import { User } from './../models/user.model';
 
+export const CURRENT_USER =             '[Users] Current User';
 export const FETCH =                    '[Users] Fetch';
 export const FETCH_COMPLETE =           '[Users] Fetch Complete';
-
 export const SELECT =                   '[User] Select';
-
 export const RETRIEVE_USER =            '[User] Retrieve User';
 export const RETRIEVE_USER_SUCCESS =    '[User] Retrieve User Success';
 export const RETRIEVE_USER_FAIL =       '[User] Retrieve User Fail';
 
+export class CurrentUserAction implements Action {
+  readonly type = CURRENT_USER;
+
+  constructor (public payload: string) {}
+}
 
 export class FetchAction  implements Action {
   readonly type = FETCH;
@@ -50,7 +54,8 @@ export class RetrieveUserFailAction implements Action {
 
 
 export type Actions
-= FetchAction
+= CurrentUserAction
+| FetchAction
 | FetchCompleteAction
 | SelectAction
 | RetrieveUserAction

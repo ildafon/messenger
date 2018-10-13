@@ -78,4 +78,5 @@ export function reducer( state = InitialState, action: messages.Actions): State 
 
 export const getIds = (state: State) => state.ids;
 export const getEntities = (state: State) => state.entities;
-export const getSelectedMessageId = (state: State) => state.selectedMessageId;
+export const getSelectedId = (state: State) => state.selectedMessageId;
+export const getFetching = (state: State) => state.isFetching;

@@ -7,23 +7,36 @@ export interface State {
   entities: { [id: string]: User};
   selectedUserId: string | null;
   isFetching: boolean;
+  currentUserId: string | null;
 }
 
 export const InitialState: State = {
   retrievedUsersIds: [],
   entities: {},
   selectedUserId: null,
-  isFetching: false
+  isFetching: false,
+  currentUserId: null
 };
 
 export function reducer( state = InitialState, action: users.Actions): State {
   switch (action.type) {
+    case users.CURRENT_USER: {
+      return {
+        retrievedUsersIds: state.retrievedUsersIds,
+        entities: state.entities,
+        selectedUserId: action.payload,
+        isFetching: state.isFetching,
+        currentUserId: action.payload
+      };
+    }
+
     case users.SELECT: {
       return {
         retrievedUsersIds: state.retrievedUsersIds,
         entities: state.entities,
         selectedUserId: action.payload,
-        isFetching: state.isFetching
+        isFetching: state.isFetching,
+        currentUserId: state.currentUserId
       };
     }
 
@@ -32,7 +45,8 @@ export function reducer( state = InitialState, action: users.Actions): State {
         retrievedUsersIds: state.retrievedUsersIds,
         entities: state.entities,
         selectedUserId: state.selectedUserId,
-        isFetching: true
+        isFetching: true,
+        currentUserId: state.currentUserId
       };
     }
 
@@ -52,7 +66,8 @@ export function reducer( state = InitialState, action: users.Actions): State {
         retrievedUsersIds: state.retrievedUsersIds,
         entities: Object.assign({}, state.entities, newUsersEntities),
         selectedUserId: state.selectedUserId,
-        isFetching: false
+        isFetching: false,
+        currentUserId: state.currentUserId
       };
     }
 
@@ -72,7 +87,8 @@ export function reducer( state = InitialState, action: users.Actions): State {
           [userId]: {...userRetrieved, ...userInStore, }
         }),
         selectedUserId: state.selectedUserId,
-        isFetching: state.isFetching
+        isFetching: state.isFetching,
+        currentUserId: state.currentUserId
       };
     }
 
@@ -83,7 +99,8 @@ export function reducer( state = InitialState, action: users.Actions): State {
         retrievedUsersIds: state.retrievedUsersIds.filter( id => id !== userIdToRetrieve ),
         entities: without,
         selectedUserId: state.selectedUserId,
-        isFetching: state.isFetching
+        isFetching: state.isFetching,
+        currentUserId: state.currentUserId
       };
     }
 
@@ -94,7 +111,11 @@ export function reducer( state = InitialState, action: users.Actions): State {
 }
 
 export const getEntities = (state: State) => state.entities;
-
 export const getRetrievedIds = (state: State) => state.retrievedUsersIds;
-
 export const getSelectedId = (state: State) => state.selectedUserId;
+export const getFetching = (state: State) => state.isFetching;
+export const getCurrentUserId = (state: State) => state.currentUserId;
+export const getCurrentUser = createSelector(getEntities, getCurrentUserId, (entities, id) => {
+  return entities[id];
+});
+

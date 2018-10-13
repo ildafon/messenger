@@ -8,20 +8,19 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 import * as fromUsers from './users';
 import * as fromMessages from './messages';
-import * as fromAuth from './auth';
+
+import { User, Message } from '../models';
 
 
 export interface State {
   users:      fromUsers.State;
   messages:   fromMessages.State;
-  auth:       fromAuth.State;
   router:     fromRouter.RouterState;
 }
 
 const reducers = {
   users:    fromUsers.reducer,
   messages: fromMessages.reducer,
-  auth:     fromAuth.reducer,
   router:   fromRouter.routerReducer
 };
 
@@ -37,10 +36,36 @@ export function reducer(state: any, action: any) {
 }
 
 export const getUsersState = (state: State) => state.users;
-export const getRetrievedUserIds = createSelector(getUsersState, fromUsers.getRetrievedIds);
-export const getSelectedUserId = createSelector(getUsersState, fromUsers.getSelectedId);
+export const getUsersEntities = createSelector(getUsersState, fromUsers.getEntities);
+export const getUsersRetrievedIds = createSelector(getUsersState, fromUsers.getRetrievedIds);
+export const getUsersSelectedId = createSelector(getUsersState, fromUsers.getSelectedId);
+export const getUsersFetching = createSelector(getUsersState, fromUsers.getFetching);
 
-
-export const alreadyRetrieved = createSelector(getRetrievedUserIds, getSelectedUserId, (ids, selected) => {
-  return ids.indexOf(selected) > -1;
+export const getUsersSelectedUser = createSelector(getUsersEntities, getUsersSelectedId, (entities, selectedId) => {
+  return entities[selectedId];
 });
+
+export const getMessagesState = (state: State) => state.messages;
+export const getMessagesIds = createSelector(getMessagesState, fromMessages.getIds);
+export const getMessagesEntities = createSelector(getMessagesState, fromMessages.getEntities);
+export const getMessagesSelectedId = createSelector(getMessagesState, fromMessages.getSelectedId);
+export const getMessagesFetching = createSelector(getMessagesState, fromMessages.getFetching);
+
+export const getMessagesOfSelectedUser = createSelector(getMessagesEntities, getUsersSelectedId,
+  (messages, ofUser) => {
+  return Object.values(messages).filter( message => message.conversation === ofUser);
+});
+
+export const getAuthorOfMessage = (authorId: string) => {
+  return createSelector(getUsersEntities, (entities) => {
+    return entities[authorId];
+  });
+};
+
+
+export const isUserAlreadyRetrieved = (userId: string) => {
+  return createSelector(getUsersRetrievedIds, (ids) => {
+    return ids.indexOf(userId) > -1;
+  });
+};
+

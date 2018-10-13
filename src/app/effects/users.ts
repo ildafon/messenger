@@ -34,16 +34,19 @@ export class UsersEffects {
       .catch(() => of(new users.FetchCompleteAction([])));
   });
 
+
   @Effect()
   select$ = this.actions$
-  .ofType(users.SELECT)
-  .map(toPayload)
-  .withLatestFrom(this.store.select(fromRoot.alreadyRetrieved))
-  .switchMap( ([query, alreadyRetrieved]) => {
+  .ofType(users.SELECT, users.CURRENT_USER)
+  .switchMap( (action ) => {
+      return of(action)
+        .withLatestFrom(this.store.select(fromRoot.isUserAlreadyRetrieved(action.payload)));
+  })
+  .switchMap( ([action, alreadyRetrieved]) => {
     if (alreadyRetrieved) {
       return empty();
     } else {
-    return this.api.retrieveUser(query)
+    return this.api.retrieveUser(action.payload)
       .map(res => new users.RetrieveUserSuccessAction(res))
       .catch(() => of(new users.RetrieveUserFailAction('error')));
     }
