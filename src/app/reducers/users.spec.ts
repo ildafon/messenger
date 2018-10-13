@@ -2,6 +2,7 @@ import { reducer, InitialState } from './users';
 import * as fromUsers from './users';
 import {
   SelectAction,
+  CurrentUserAction,
    RetrieveUserAction,
    FetchAction,
    FetchCompleteAction,
@@ -27,6 +28,15 @@ describe('UsersReducer', () => {
 
       const result = reducer(fromUsers.InitialState, action);
       expect(result.selectedUserId).toBe('1');
+    });
+  });
+
+  describe('CURRENT_USER', () => {
+    it('should set the current user id on the state', () => {
+      const action = new CurrentUserAction('ry');
+
+      const result = reducer(fromUsers.InitialState, action);
+      expect(result.currentUserId).toBe('ry');
     });
   });
 
@@ -259,51 +269,6 @@ describe('UsersReducer', () => {
     it('should remove particular user id from retrevedIds', () => {
       existingUsers(RetrieveUserAction);
     });
-  });
-
-
-  describe('Selectors', () => {
-
-    const state = {
-      retrievedUsersIds: ['user1', 'user2'],
-      entities: {
-        user1: {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'},
-        user2: {login: 'user2', avatarUrl: 'www2', name: 'User2', location: 'B'},
-        user3: {login: 'user3', avatarUrl: 'www3'}
-      },
-      selectedUserId: 'user2',
-      isFetching: false,
-      currentUserId: null
-    };
-
-    describe('getEntities', () => {
-      it('should return entities', () => {
-        const result = fromUsers.getEntities(state);
-        expect(result).toBe(state.entities);
-      });
-    });
-
-    describe('getRetrievedIds', () => {
-      it('should return retrievedUsers Ids', () => {
-        const result = fromUsers.getRetrievedIds(state);
-        expect(result).toBe(state.retrievedUsersIds);
-      });
-    });
-
-    describe('getSelectedId', () => {
-      it('should return selected Ids', () => {
-        const result = fromUsers.getSelectedId(state);
-        expect(result).toBe(state.selectedUserId);
-      });
-    });
-
-    describe('getSelectedId', () => {
-      it('should return selected Ids', () => {
-        const result = fromUsers.getSelectedId(state);
-        expect(result).toBe(state.selectedUserId);
-      });
-    });
-
   });
 
 });
