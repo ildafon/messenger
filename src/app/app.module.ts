@@ -1,4 +1,3 @@
-
 import { HttpModule } from '@angular/http';
 import { CommonModule} from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,8 +14,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 
-
 import { ApiService } from './services/api.service';
+import { NormalizationService } from './services/normalization.service';
 
 import { UsersEffects } from './effects/users';
 import { MessagesEffects } from './effects/messages';
@@ -25,7 +24,6 @@ import { routes } from './routes';
 import { reducer } from './reducers';
 
 import { environment } from './../environments/environment';
-
 
 
 @NgModule({
@@ -45,7 +43,10 @@ import { environment } from './../environments/environment';
     EffectsModule.run(UsersEffects),
     EffectsModule.run(MessagesEffects)
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService,
+    NormalizationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

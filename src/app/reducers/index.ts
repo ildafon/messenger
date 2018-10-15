@@ -1,3 +1,5 @@
+
+import {NormalizationService} from './../services/normalization.service';
 import { createSelector } from 'reselect';
 import { ActionReducer, combineReducers } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
@@ -55,10 +57,22 @@ export const getMessagesEntities = createSelector(getMessagesState, fromMessages
 export const getMessagesSelectedId = createSelector(getMessagesState, fromMessages.getSelectedId);
 export const getMessagesFetching = createSelector(getMessagesState, fromMessages.getFetching);
 
-export const getMessagesOfSelectedUser = createSelector(getMessagesEntities, getUsersSelectedId,
+
+export const getMessageIdsOfSelectedUser = createSelector(getMessagesEntities, getUsersSelectedId,
   (messages, ofUser) => {
-  return Object.values(messages).filter( message => message.conversation === ofUser);
+  return Object.values(messages).filter( message => message.conversation === ofUser).map( message => message.id);
 });
+
+export const getMessagesOfSelectedUser = () => {
+  return createSelector(getMessagesEntities, getUsersEntities, getMessageIdsOfSelectedUser, (messageEntities, userEntities, ids) => {
+    const entitiesAggregated = Object.assign({}, {
+      'messages': messageEntities,
+      'users':    userEntities
+    });
+
+    return NormalizationService.denormalize(ids, entitiesAggregated);
+  });
+ };
 
 export const getAuthorOfMessage = (authorId: string) => {
   return createSelector(getUsersEntities, (entities) => {
@@ -72,4 +86,5 @@ export const isUserAlreadyRetrieved = (userId: string) => {
     return ids.indexOf(userId) > -1;
   });
 };
+
 
