@@ -13,6 +13,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 import { AppComponent } from './app.component';
+import { UserListComponent } from './containers/user-list/user-list.component';
+import { UserDetailComponent } from './containers/user-detail/user-detail.component';
+import { UserChatComponent } from './containers/user-chat/user-chat.component';
 
 import { ApiService } from './services/api.service';
 import { NormalizationService } from './services/normalization.service';
@@ -26,9 +29,13 @@ import { reducer } from './reducers';
 import { environment } from './../environments/environment';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserListComponent,
+    UserDetailComponent,
+    UserChatComponent
   ],
   imports: [
     CommonModule,
