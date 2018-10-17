@@ -88,3 +88,20 @@ export const isUserAlreadyRetrieved = (userId: string) => {
 };
 
 
+
+export const getRouterState = (state: State) => state.router;
+export const getShowState = createSelector(getRouterState, (state: fromRouter.RouterState) => {
+  switch (state.path && state.path.split('/').length) {
+    case 2: {
+      return 'show-state show-state--list';
+    }
+    case 3: {
+      return 'show-state show-state--detail';
+    }
+    case 4: {
+      return 'show-state show-state--chat';
+    }
+    default:  return '';
+  }
+});
+

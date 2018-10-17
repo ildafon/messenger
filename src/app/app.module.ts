@@ -1,3 +1,4 @@
+
 import { HttpModule } from '@angular/http';
 import { CommonModule} from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +20,7 @@ import { UserChatComponent } from './containers/user-chat/user-chat.component';
 
 import { ApiService } from './services/api.service';
 import { NormalizationService } from './services/normalization.service';
+import { ShowStateService } from './services/show-state.service';
 
 import { UsersEffects } from './effects/users';
 import { MessagesEffects } from './effects/messages';
@@ -52,7 +54,8 @@ import { environment } from './../environments/environment';
   ],
   providers: [
     ApiService,
-    NormalizationService
+    NormalizationService,
+    ShowStateService
   ],
   bootstrap: [AppComponent]
 })

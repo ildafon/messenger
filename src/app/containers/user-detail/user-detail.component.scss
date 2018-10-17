@@ -2,4 +2,39 @@
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
+  height: 100%;
 }
+
+.show-state {
+  display: flex;
+  flex-direction: column;
+
+  &--list {
+    flex: 1 1 auto;
+    align-items: center;
+    .card {
+      width: 300px;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  &--detail {
+    flex: 1 1 auto;
+    align-items: center;
+    .card {
+      width: 500px;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  &--chat {
+    display: none;
+    .card {
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+}
+

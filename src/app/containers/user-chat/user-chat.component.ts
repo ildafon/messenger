@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'msg-user-chat',
   templateUrl: './user-chat.component.html',
   styleUrls: ['./user-chat.component.scss']
