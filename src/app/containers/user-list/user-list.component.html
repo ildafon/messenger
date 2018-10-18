@@ -14,7 +14,7 @@
 
         <perfect-scrollbar class="container">
           <ul class="list-group">
-            <li *ngFor="let user of users$ | async" class="list-group-item">
+            <li *ngFor="let user of users$ | async" class="msgr-list-item">
               <msg-user-list-item  [user]="user" [ngClass]="showState$ | async"></msg-user-list-item>
             </li>
           </ul>

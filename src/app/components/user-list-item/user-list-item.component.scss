@@ -4,6 +4,9 @@ img {
 
 }
 
+
+
+
 :host.show-state {
   display: flex;
   align-items: flex-start;
@@ -24,6 +27,9 @@ img {
 
   &.show-state--list,
   &.show-state--detail {
+    .msgr-media {
+      padding-left: 2rem;
+    }
     .msgr-avatar-link {
       display: none;
     }
@@ -39,4 +45,17 @@ img {
 
 
 }
+
+:host:hover {
+  &.show-state--list,
+  &.show-state--detail {
+    background-color:  #84b9c9;
+    .msgr-list-name {
+      color: white !important;
+    }
+  }
+
+
+}
+
 
