@@ -1,14 +1,16 @@
 <div [ngClass]="showState$ | async" >
-    <!-- class="d-flex flex-column align-items-center flex-fill bg-warning" -->
+
 
   <div class="card shadow-sm">
       <div class="card-header">
           <h5 class="text-secondary mt-1">Информация о пользователе</h5>
       </div>
-    <div class="card-body">
-      <h4 class="card-title">Title</h4>
-      <p class="card-text">Text</p>
-    </div>
+    <perfect-scrollbar class="container">
+      <div class="card-body">
+        <h4 class="card-title">Title</h4>
+        <p class="card-text">Text</p>
+      </div>
+    </perfect-scrollbar>
   </div>
 
 </div>

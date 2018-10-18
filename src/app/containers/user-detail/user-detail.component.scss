@@ -16,9 +16,10 @@
 
   &--list {
     flex: 1 1 auto;
+
     align-items: center;
     .card {
-      width: 300px;
+      // width: 300px;
       height: 100%;
       overflow: hidden;
     }
@@ -26,9 +27,12 @@
 
   &--detail {
     flex: 1 1 auto;
+    @media screen and (max-width: 576px) {
+      align-items: center;
+    }
     align-items: flex-start;
     .card {
-      width: 500px;
+      min-width: 200px;
       height: 100%;
       overflow: hidden;
       margin-left: 1rem;

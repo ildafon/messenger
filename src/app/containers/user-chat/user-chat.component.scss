@@ -3,6 +3,9 @@
   flex-direction: column;
   flex: 1 1 auto;
 }
+.msgr-chat-messages {
+  overflow: hidden;
+}
 .msgr-chat-messages-header {
   height: 48px;
   margin-bottom: 1rem;
