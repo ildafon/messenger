@@ -12,11 +12,22 @@
   // color: white;
   // background-color: black;
 
+  background-color: #84b9c9;
+  color: white;
+
 
   overflow: hidden;
+
+  &:hover {
+    background-color:white;
+    color:  black;
+    font-weight: 400 !important;
+  }
 
 }
 
 .initialsClass {
   margin: auto;
+
+
 }

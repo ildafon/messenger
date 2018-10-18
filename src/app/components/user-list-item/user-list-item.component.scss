@@ -52,6 +52,14 @@ img {
     background-color:  #84b9c9;
     .msgr-list-name {
       color: white !important;
+      text-decoration: none !important;
+    }
+  }
+
+  &.show-state--chat {
+
+    .msgr-avatar-link {
+      text-decoration: none !important;
     }
   }
 

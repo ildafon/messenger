@@ -61,8 +61,14 @@
   }
 }
 
-li {
+a {
+
   height: 70px;
   display: flex;
   justify-content: stretch;
+
+  &:hover {
+    text-decoration: none !important;
+  }
+
 }
