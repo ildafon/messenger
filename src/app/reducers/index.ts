@@ -43,6 +43,8 @@ export const getUsersRetrievedIds = createSelector(getUsersState, fromUsers.getR
 export const getUsersSelectedId = createSelector(getUsersState, fromUsers.getSelectedId);
 export const getUsersFetching = createSelector(getUsersState, fromUsers.getFetching);
 
+
+
 export const getUsersSelectedUser = createSelector(getUsersEntities, getUsersSelectedId, (entities, selectedId) => {
   return entities[selectedId];
 });
@@ -50,6 +52,11 @@ export const getUsersCurrentUserId = createSelector(getUsersState, fromUsers.get
 export const getUsersCurrentUser = createSelector(getUsersEntities, getUsersCurrentUserId, (entities, currentUserId) => {
   return entities[currentUserId];
 });
+
+export const getUsersFetched = createSelector(getUsersEntities, getUsersCurrentUserId, (entities, curentId) => {
+  return Object.values(entities).filter(user => user.login !== curentId);
+});
+
 
 export const getMessagesState = (state: State) => state.messages;
 export const getMessagesIds = createSelector(getMessagesState, fromMessages.getIds);

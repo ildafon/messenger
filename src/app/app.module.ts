@@ -18,6 +18,14 @@ import { UserListComponent } from './containers/user-list/user-list.component';
 import { UserDetailComponent } from './containers/user-detail/user-detail.component';
 import { UserChatComponent } from './containers/user-chat/user-chat.component';
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
+
 import { ApiService } from './services/api.service';
 import { NormalizationService } from './services/normalization.service';
 import { ShowStateService } from './services/show-state.service';
@@ -29,6 +37,9 @@ import { routes } from './routes';
 import { reducer } from './reducers';
 
 import { environment } from './../environments/environment';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserListItemComponent } from './components/user-list-item/user-list-item.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 
 
@@ -37,7 +48,10 @@ import { environment } from './../environments/environment';
     AppComponent,
     UserListComponent,
     UserDetailComponent,
-    UserChatComponent
+    UserChatComponent,
+    NavbarComponent,
+    UserListItemComponent,
+    AvatarComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +64,8 @@ import { environment } from './../environments/environment';
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(UsersEffects),
-    EffectsModule.run(MessagesEffects)
+    EffectsModule.run(MessagesEffects),
+    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
   ],
   providers: [
     ApiService,

@@ -16,9 +16,9 @@ export class AppComponent  implements OnInit {
   constructor (
    private store: Store<fromRoot.State>
     ) {
-    // store.dispatch(new users.CurrentUserAction('ildafon'));
-    // store.dispatch(new users.FetchAction);
-    // store.dispatch(new messages.FetchMessagesAction());
+    store.dispatch(new users.CurrentUserAction('ildafon'));
+    store.dispatch(new users.FetchAction);
+    store.dispatch(new messages.FetchMessagesAction());
   }
 
   ngOnInit() {

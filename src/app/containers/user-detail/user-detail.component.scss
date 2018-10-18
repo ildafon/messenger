@@ -5,6 +5,11 @@
   height: 100%;
 }
 
+.card-header {
+  height: 4rem;
+  vertical-align: middle
+}
+
 .show-state {
   display: flex;
   flex-direction: column;
@@ -21,11 +26,12 @@
 
   &--detail {
     flex: 1 1 auto;
-    align-items: center;
+    align-items: flex-start;
     .card {
       width: 500px;
       height: 100%;
       overflow: hidden;
+      margin-left: 1rem;
     }
   }
 

@@ -1,0 +1,42 @@
+img {
+  width: 50px;
+  height: 50px;
+
+}
+
+:host.show-state {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  .msgr-media {
+
+    display: flex;
+    align-items: stretch;
+
+
+    .msgr-media-body {
+      display: flex;
+      justify-content: center;
+    }
+
+  }
+
+  &.show-state--list,
+  &.show-state--detail {
+    .msgr-avatar-link {
+      display: none;
+    }
+
+  }
+
+  &.show-state--chat {
+    .msgr-media-body {
+      display: none !important;
+    }
+
+  }
+
+
+}
+

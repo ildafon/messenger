@@ -2,38 +2,70 @@
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
-  height: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .show-state {
   display: flex;
   flex-direction: column;
 
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+
+
   &--list {
     flex: 1 1 auto;
     align-items: center;
+
     .card {
       width: 300px;
       height: 100%;
       overflow: hidden;
     }
+
   }
 
   &--detail {
     flex: 1 1 auto;
-    align-items: center;
+    align-items: flex-end;
+
     .card {
       width: 300px;
       height: 100%;
       overflow: hidden;
+      margin-right: 1rem;
     }
   }
 
   &--chat {
     align-items: start;
+
     .card {
       height: 100%;
       overflow: hidden;
+      margin-left: 1rem;
+
+
+      .card-header {
+        padding: 1.96rem;
+
+        .form-inline {
+          display: none;
+        }
+    }
+
+
+
+
     }
   }
 }
 
+li {
+  height: 70px;
+  display: flex;
+  justify-content: stretch;
+}
