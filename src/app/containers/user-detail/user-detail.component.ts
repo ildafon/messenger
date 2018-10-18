@@ -1,7 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import '@ngrx/core/add/operator/select';
+import 'rxjs/add/operator/map';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
+import * as user from '../../actions/users.actions';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,12 +15,23 @@ import * as fromRoot from '../../reducers';
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
-export class UserDetailComponent implements OnInit {
+export class UserDetailComponent implements OnInit, OnDestroy {
   showState$: Observable<string>;
-  constructor(private store: Store<fromRoot.State>) { }
+
+  actionsSubscription: Subscription;
+
+  constructor(private store: Store<fromRoot.State>, route: ActivatedRoute) {
+    this.actionsSubscription = route.params
+      .select<string>('id')
+      .map(id => new user.SelectAction(id))
+      .subscribe(store);
+   }
 
   ngOnInit() {
     this.showState$ = this.store.select(fromRoot.getShowState);
   }
 
+  ngOnDestroy() {
+    this.actionsSubscription.unsubscribe();
+  }
 }
