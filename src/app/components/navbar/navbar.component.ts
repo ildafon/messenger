@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'msg-navbar',
   templateUrl: './navbar.component.html',
@@ -8,9 +8,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+  onClick() {
+    this.router.navigateByUrl('/users');
   }
 
 }

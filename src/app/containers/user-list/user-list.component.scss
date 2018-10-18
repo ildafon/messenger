@@ -27,6 +27,10 @@
 
   &--detail {
     flex: 1 1 auto;
+    @media screen and (max-width: 576px) {
+      display: none;
+    }
+    display: flex;
     align-items: flex-end;
 
     .card {
