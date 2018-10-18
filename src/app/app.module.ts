@@ -21,6 +21,8 @@ import { UserChatComponent } from './containers/user-chat/user-chat.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
+
+
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -40,6 +42,9 @@ import { environment } from './../environments/environment';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserListItemComponent } from './components/user-list-item/user-list-item.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { NavbarMenuButtonComponent } from './components/navbar-menu-button/navbar-menu-button.component';
+import { StartChatButtonComponent } from './components/start-chat-button/start-chat-button.component';
 
 
 
@@ -51,7 +56,10 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     UserChatComponent,
     NavbarComponent,
     UserListItemComponent,
-    AvatarComponent
+    AvatarComponent,
+    ProfileComponent,
+    NavbarMenuButtonComponent,
+    StartChatButtonComponent
   ],
   imports: [
     CommonModule,

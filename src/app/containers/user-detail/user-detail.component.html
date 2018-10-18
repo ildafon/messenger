@@ -1,7 +1,7 @@
 <div [ngClass]="showState$ | async" >
 
 
-  <div class="card shadow-sm">
+  <div class="card shadow-sm msgr-user-detail-card">
       <div class="card-header">
           <h5 class="text-secondary mt-1">Информация о пользователе</h5>
       </div>
@@ -11,6 +11,7 @@
         <p class="card-text">Text</p>
       </div>
     </perfect-scrollbar>
+    <msg-start-chat-button class="msgr-start-chat-button" (click)="startChat()"></msg-start-chat-button>
   </div>
 
 </div>

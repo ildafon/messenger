@@ -10,6 +10,15 @@
   vertical-align: middle
 }
 
+.msgr-user-detail-card {
+  position: relative;
+}
+.msgr-start-chat-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 .show-state {
   display: flex;
   flex-direction: column;

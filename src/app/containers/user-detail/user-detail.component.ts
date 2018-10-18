@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import * as user from '../../actions/users.actions';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,13 +17,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserDetailComponent implements OnInit, OnDestroy {
   showState$: Observable<string>;
-
+  userId: string;
   actionsSubscription: Subscription;
 
-  constructor(private store: Store<fromRoot.State>, route: ActivatedRoute) {
+  constructor(
+          private store: Store<fromRoot.State>,
+          private route: ActivatedRoute,
+          private router: Router) {
     this.actionsSubscription = route.params
       .select<string>('id')
-      .map(id => new user.SelectAction(id))
+      .map(id => {
+        this.userId = id;
+        return new user.SelectAction(id);
+      })
       .subscribe(store);
    }
 
@@ -33,5 +39,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.actionsSubscription.unsubscribe();
+  }
+
+  startChat() {
+    this.router.navigate(['/users', this.userId, 'conversation']);
   }
 }
