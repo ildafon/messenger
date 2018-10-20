@@ -31,6 +31,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
         return new user.SelectAction(id);
       })
       .subscribe(store);
+
    }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { User } from './../../models/user.model';
 @Component({
@@ -8,10 +8,30 @@ import { User } from './../../models/user.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileComponent implements OnInit {
-  user: Observable<User>;
+  @Input() user: User;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  get avatar() {
+    return this.user && this.user.avatar_url;
+  }
+
+  get name() {
+    return this.user && this.user.name;
+  }
+
+  get location() {
+    return this.user && this.user.location;
+  }
+
+  get company() {
+    return this.user && this.user.company ;
+  }
+
+  get blog() {
+    return this.user && this.user.blog;
+  }
 }

@@ -1,3 +1,7 @@
-<p>
-  profile works!
-</p>
+<div *ngIf="user" class="card">
+  <img class="card-img-top" src="{{ avatar }}" alt="name">
+  <div class="card-body">
+    <h4 class="card-title">{{name}}</h4>
+    <p class="card-text">{{location}}</p>
+  </div>
+</div>

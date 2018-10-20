@@ -4,79 +4,66 @@
   flex: 1 1 auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-.show-state {
-  display: flex;
-  flex-direction: column;
 
-
-
-
-
-  &--list {
-    flex: 1 1 auto;
-    align-items: center;
-
-    .card {
-      width: 300px;
-      height: 100%;
-      overflow: hidden;
-    }
-
-  }
-
-  &--detail {
-    flex: 1 1 auto;
-    @media screen and (max-width: 576px) {
-      display: none;
-    }
+  .show-state {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
 
-    .card {
-      width: 300px;
-      height: 100%;
-      overflow: hidden;
-      margin-right: 1rem;
+
+
+    &--list {
+      flex: 1 1 auto;
+      align-items: center;
+
+      .card {
+        width: 300px;
+        height: 100%;
+        overflow: hidden;
+      }
+
     }
-  }
 
-  &--chat {
-    align-items: start;
+    &--detail {
+      flex: 1 1 auto;
+      @media screen and (max-width: 576px) {
+        display: none;
+      }
+      display: flex;
+      align-items: flex-end;
 
-    .card {
-      height: 100%;
-      overflow: hidden;
-      margin-left: 1rem;
+      .card {
+        width: 300px;
+        height: 100%;
+        overflow: hidden;
+        margin-right: 1rem;
+      }
+    }
+
+    &--chat {
+      align-items: start;
+
+      .card {
+        height: 100%;
+        overflow: hidden;
+        margin-left: 1rem;
 
 
-      .card-header {
-        padding: 1.96rem;
+        .card-header {
+          padding: 1.96rem;
 
-        .form-inline {
-          display: none;
+          .msgr-user-list-header {
+            display: none;
+          }
         }
 
-        .msgr-user-list-header {
-          display: none;
-        }
-    }
 
-
-
-
+      }
     }
   }
-}
 
-a {
 
-  height: 72px;
-  display: flex;
-  justify-content: stretch;
 
-  &:hover {
-    text-decoration: none !important;
-  }
 
 }
+
+

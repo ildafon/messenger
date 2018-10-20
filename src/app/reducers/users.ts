@@ -24,7 +24,7 @@ export function reducer( state = InitialState, action: users.Actions): State {
       return {
         retrievedUsersIds: state.retrievedUsersIds,
         entities: state.entities,
-        selectedUserId: action.payload,
+        selectedUserId: state.selectedUserId,
         isFetching: state.isFetching,
         currentUserId: action.payload
       };

@@ -14,12 +14,10 @@
 
 
           <perfect-scrollbar class="container">
-            <ul class="list-group">
-              <a *ngFor="let user of users$ | async" class="msgr-list-item"
-              [routerLink]="['/users', user.login]"
-                routerLinkActive="active">
-                  <msg-user-list-item  [user]="user" [ngClass]="showState$ | async"></msg-user-list-item>
-              </a>
+            <ul class="nav flex-column">
+
+                  <msg-user-list-item *ngFor="let user of users$ | async"  [user]="user" [ngClass]="showState$ | async"></msg-user-list-item>
+
             </ul>
           </perfect-scrollbar>
       </div>

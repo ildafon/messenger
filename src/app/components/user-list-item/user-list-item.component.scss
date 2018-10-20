@@ -1,69 +1,97 @@
-img {
-  width: 50px;
-  height: 50px;
-
-}
-
-
-
 
 :host.show-state {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-
-  .msgr-media {
-
-    display: flex;
-    align-items: stretch;
+  flex-direction: column;
+  justify-content:center;
+  height: 72px;
 
 
-    .msgr-media-body {
-      display: flex;
-      justify-content: center;
-    }
 
-  }
+
 
   &.show-state--list,
   &.show-state--detail {
-    .msgr-media {
-      padding-left: 2rem;
-    }
+    align-items: flex-start;
+
     .msgr-avatar-link {
       display: none;
     }
+    .msgr-username-link {
+      display: flex;
+      align-items: center;
+      padding-left: 2rem;
+      width: 100%;
+      height: 100%;
 
+
+      &.active, &:hover {
+        background-color:  #84b9c9;
+        text-decoration: none !important;
+        box-shadow: 3px 3px 16px -2px rgba(0, 0, 0, .5);
+        .msgr-list-name { color: white !important; }
+      }
+
+    }
   }
 
   &.show-state--chat {
-    .msgr-media-body {
+
+    .msgr-username-link {
       display: none !important;
     }
 
-  }
-
-
-}
-
-:host:hover {
-  &.show-state--list,
-  &.show-state--detail {
-    background-color:  #84b9c9;
-    .msgr-list-name {
-      color: white !important;
-      text-decoration: none !important;
-    }
-  }
-
-  &.show-state--chat {
-
     .msgr-avatar-link {
       text-decoration: none !important;
+      background-color:  #84b9c9;
+      border-radius: 50%;
+      margin-left: 1rem;
+      margin-right: 1rem;
+
+      &:hover, &.active {
+        box-shadow: 3px 3px 16px -2px rgba(0, 0, 0, .5);
+        background-color: white !important;
+        color: black;
+      }
     }
+
   }
 
 
 }
 
+// :host:hover {
+//   &.show-state--list,
+//   &.show-state--detail {
+//     // background-color:  #84b9c9;
+//     .msgr-list-name {
+//       color: white !important;
+//       text-decoration: none !important;
+//     }
+//   }
 
+//   &.show-state--chat {
+
+//     .msgr-avatar-link {
+//       text-decoration: none !important;
+//     }
+//   }
+
+
+// }
+
+
+
+
+.msgr-user-list-link {
+
+  height: 72px;
+  display: flex;
+  justify-content: stretch;
+
+  &:hover,
+  &.active {
+
+    text-decoration: none !important;
+  }
+
+}

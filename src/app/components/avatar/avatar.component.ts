@@ -9,7 +9,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class AvatarComponent implements OnInit {
   @Input() user: User;
-
+  @Input() currentlySelected: boolean;
   initials: string;
 
   constructor() { }

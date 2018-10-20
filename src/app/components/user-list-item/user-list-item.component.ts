@@ -12,7 +12,6 @@ export class UserListItemComponent implements OnInit {
 
 @Input() user: User;
 
-itemClass: string;
 
   constructor() { }
 
@@ -20,10 +19,14 @@ itemClass: string;
   }
 
   get login() {
-    return this.user.login;
+    return this.user && this.user.login;
   }
 
   get name() {
-    return this.user.name;
+    return  this.user && this.user.name;
+  }
+
+  getRouterLink(user: User, ...args): (string | null)[] {
+    return ['/users', user.login, ...args ];
   }
 }

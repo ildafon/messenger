@@ -45,6 +45,8 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarMenuButtonComponent } from './components/navbar-menu-button/navbar-menu-button.component';
 import { StartChatButtonComponent } from './components/start-chat-button/start-chat-button.component';
+import { SelectedUserComponent } from './containers/selected-user/selected-user.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 
@@ -59,7 +61,9 @@ import { StartChatButtonComponent } from './components/start-chat-button/start-c
     AvatarComponent,
     ProfileComponent,
     NavbarMenuButtonComponent,
-    StartChatButtonComponent
+    StartChatButtonComponent,
+    SelectedUserComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,

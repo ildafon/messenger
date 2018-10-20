@@ -1,8 +1,16 @@
-<div class="msgr-media">
-  <a class="msgr-avatar-link" href="#" >
-    <msg-avatar [user]="user"></msg-avatar>
+
+
+  <a class="msgr-avatar-link"
+    [routerLink]="getRouterLink(user, 'conversation')"
+    routerLinkActive="active">
+
+      <msg-avatar [user]="user"></msg-avatar>
   </a>
-  <div class="msgr-media-body">
-    <h5 class="msgr-list-name text-dark">{{name}}</h5>
-  </div>
-</div>
+
+  <a class="msgr-username-link"
+    [routerLink]="getRouterLink(user)"
+    routerLinkActive="active">
+      <h5 class="msgr-list-name text-dark">{{name}}</h5>
+  </a>
+
+
