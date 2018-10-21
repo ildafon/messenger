@@ -7,7 +7,9 @@ import { User } from './../../models/user.model';
 @Component({
   selector: 'msg-selected-user',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<msg-profile [user]="user$ | async"></msg-profile>`
+  template: `
+  <msg-profile [user]="user$ | async"></msg-profile>
+  `
 })
 export class SelectedUserComponent implements OnInit {
   user$: Observable<User>;

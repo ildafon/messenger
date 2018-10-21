@@ -1,0 +1,20 @@
+<div *ngIf="message"  class="msgr-message-card card">
+<div class="media">
+  <img class="d-flex m-1 mr-3" src="{{ authorsAvatar }}" alt="authorsName">
+
+  <div class="msgr-message-body media-body">
+    <h5 class="mt-0">{{authorsName | msgrEllipsis:40}}</h5>
+
+    <perfect-scrollbar>
+      <div class="msgr-message-text">
+
+          {{messageText}}
+
+      </div>
+    </perfect-scrollbar>
+
+    <span class="msgr-message-date badge badge-light">{{messageDate | date:'medium' }}</span>
+  </div>
+
+</div>
+</div>

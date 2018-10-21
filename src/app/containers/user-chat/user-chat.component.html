@@ -1,22 +1,29 @@
 <div class="flex-fill d-flex flex-column align-items-stretch justify-content-end">
-  <div class="card  flex-grow-1 mb-3 mx-3 shadow-sm msgr-chat-messages">
-      <div class="card-header msgr-chat-messages-header">
-          <h5 class="text-secondary mt-1">Сообщения пользователя</h5>
-      </div>
-      <perfect-scrollbar class="container">
-          Messages
-      </perfect-scrollbar>
 
-    </div>
-  <div class="card  shadow-sm mx-3 ">
+  <div class=" msgr-chat-messages card  flex-grow-1 mb-3 mx-3 shadow-sm">
+
+        <div class="msgr-chat-messages-header card-header">
+            <h5 class="text-secondary mt-1">{{name$ | async}}</h5>
+        </div>
+        <div class="msgr-chat-messages-body card-body">
+          <!-- <perfect-scrollbar> -->
+            <msg-message *ngFor="let message of messages$ | async" [message]="message"></msg-message>
+          <!-- </perfect-scrollbar> -->
+      </div>
+
+      </div>
+
+  <div class="msgr-chat-message-form card  shadow-sm mx-3 ">
     <div class="card-body">
         <div class="form-group">
             <label for="">Message</label>
             <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
             <small id="helpId" class="text-muted">Help text</small>
-          </div>
-    </div>
+        </div>
     </div>
   </div>
+
+
+</div>
 
 

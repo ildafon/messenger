@@ -4,9 +4,24 @@
   flex: 1 1 auto;
 }
 .msgr-chat-messages {
-  overflow: hidden;
+  // height: 100%;
+  // overflow: hidden;
+  // padding-bottom: 1rem;
+  // box-sizing: content-box;
+
+  .msgr-chat-messages-header {
+    height: 48px;
+    margin-bottom: 1rem;
+  }
+
+  .msgr-chat-messages-body {
+    // height: 100%;
+    overflow-y: auto;
+    margin-bottom: 2rem;
+  }
+
 }
-.msgr-chat-messages-header {
-  height: 48px;
-  margin-bottom: 1rem;
+
+.msgr-chat-message-form {
+  min-height: 9rem;
 }

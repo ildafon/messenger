@@ -10,7 +10,7 @@
   <a class="msgr-username-link"
     [routerLink]="getRouterLink(user)"
     routerLinkActive="active">
-      <h5 class="msgr-list-name text-dark">{{name}}</h5>
+      <h5 class="msgr-list-name text-dark">{{name | msgrEllipsis:20 }}</h5>
   </a>
 
 

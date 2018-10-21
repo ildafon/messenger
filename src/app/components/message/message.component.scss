@@ -1,0 +1,36 @@
+img {
+  height: 50px;
+  width: 50px;
+}
+.msgr-message-card {
+  margin-bottom: 0.5rem;
+
+  .msgr-message-body{
+    position: relative;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+
+    .msgr-message-text{
+      max-height: 10rem;
+    }
+
+    .msgr-message-date {
+      position: absolute;
+      right: 0.1rem;
+      bottom: 0.1rem;
+    }
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

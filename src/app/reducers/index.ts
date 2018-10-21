@@ -1,4 +1,3 @@
-
 import {NormalizationService} from './../services/normalization.service';
 import { createSelector } from 'reselect';
 import { ActionReducer, combineReducers } from '@ngrx/store';
@@ -48,6 +47,11 @@ export const getUsersFetching = createSelector(getUsersState, fromUsers.getFetch
 export const getUsersSelectedUser = createSelector(getUsersEntities, getUsersSelectedId, (entities, selectedId) => {
   return entities[selectedId];
 });
+
+export const getSelectedUserName = createSelector(getUsersSelectedUser, (user) => {
+  return user && user.name;
+});
+
 export const getUsersCurrentUserId = createSelector(getUsersState, fromUsers.getCurrentUserId);
 export const getUsersCurrentUser = createSelector(getUsersEntities, getUsersCurrentUserId, (entities, currentUserId) => {
   return entities[currentUserId];
@@ -64,22 +68,25 @@ export const getMessagesEntities = createSelector(getMessagesState, fromMessages
 export const getMessagesSelectedId = createSelector(getMessagesState, fromMessages.getSelectedId);
 export const getMessagesFetching = createSelector(getMessagesState, fromMessages.getFetching);
 
+export const isSelectedUserhasMessages = createSelector(getMessagesEntities, getUsersSelectedId,
+  (messages, ofUser) => {
+  return Object.values(messages).map( message => message.author).indexOf(ofUser) > -1;
+});
 
 export const getMessageIdsOfSelectedUser = createSelector(getMessagesEntities, getUsersSelectedId,
   (messages, ofUser) => {
   return Object.values(messages).filter( message => message.conversation === ofUser).map( message => message.id);
 });
 
-export const getMessagesOfSelectedUser = () => {
-  return createSelector(getMessagesEntities, getUsersEntities, getMessageIdsOfSelectedUser, (messageEntities, userEntities, ids) => {
+export const getMessagesOfSelectedUser =
+   createSelector(getMessagesEntities, getUsersEntities, getMessageIdsOfSelectedUser, (messageEntities, userEntities, ids) => {
     const entitiesAggregated = Object.assign({}, {
       'messages': messageEntities,
       'users':    userEntities
     });
 
-    return NormalizationService.denormalize(ids, entitiesAggregated);
+    return ids && NormalizationService.denormalize(ids, entitiesAggregated);
   });
- };
 
 export const getAuthorOfMessage = (authorId: string) => {
   return createSelector(getUsersEntities, (entities) => {

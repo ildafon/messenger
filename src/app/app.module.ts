@@ -47,6 +47,8 @@ import { NavbarMenuButtonComponent } from './components/navbar-menu-button/navba
 import { StartChatButtonComponent } from './components/start-chat-button/start-chat-button.component';
 import { SelectedUserComponent } from './containers/selected-user/selected-user.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MessageComponent } from './components/message/message.component';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 
 
@@ -63,7 +65,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     NavbarMenuButtonComponent,
     StartChatButtonComponent,
     SelectedUserComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    MessageComponent,
+    EllipsisPipe
   ],
   imports: [
     CommonModule,

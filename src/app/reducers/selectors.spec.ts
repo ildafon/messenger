@@ -127,6 +127,18 @@ describe('Selectors', () => {
     });
   });
 
+
+  describe('isSelectedUserhasMessages', () => {
+    it('should return is user has messages', () => {
+
+      const expected = true;
+
+      const result = fromRoot.isSelectedUserhasMessages(state);
+      expect(result).toEqual(expected);
+    });
+  });
+
+
   describe('getMessageIDsOfSelectedUser', () => {
     it('should return message Ids of selected user', () => {
 
@@ -178,7 +190,41 @@ describe('Selectors', () => {
       }];
 
 
-      const result = fromRoot.getMessagesOfSelectedUser()(state);
+      const result = fromRoot.getMessagesOfSelectedUser(state);
+      expect(result).toEqual(expected);
+    });
+  });
+
+
+
+  describe('getMessagesOfSelectedUser2', () => {
+    it('should return empty array if no messages ', () => {
+      const state2 = {
+        messages: {
+          ids: [],
+          entities: {},
+          selectedMessageId: null,
+          isFetching: false
+        },
+        users: {
+          retrievedUsersIds: ['user1', 'user2'],
+          entities: {
+            user1: {login: 'user1', avatarUrl: 'www1', name: 'User1', location: 'A'},
+            user2: {login: 'user2', avatarUrl: 'www2', name: 'User2', location: 'B'},
+            user3: {login: 'user3', avatarUrl: 'www3'}
+          },
+          selectedUserId: 'user2',
+          isFetching: false,
+          currentUserId: 'user1'
+        },
+        router: {
+          path: '/'
+        }
+      };
+      const expected = [];
+
+
+      const result = fromRoot.getMessagesOfSelectedUser(state2);
       expect(result).toEqual(expected);
     });
   });
