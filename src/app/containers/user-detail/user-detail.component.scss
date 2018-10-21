@@ -1,6 +1,9 @@
 :host {
   display: flex;
   flex-direction: row;
+
+  min-height: 0px;
+
   flex: 1 1 auto;
   height: 100%;
 }
@@ -12,6 +15,7 @@
 
 .msgr-user-detail-card {
   position: relative;
+  height: 800px;
 }
 .msgr-start-chat-button {
   position: absolute;
@@ -23,13 +27,16 @@
   display: flex;
   flex-direction: column;
 
+
+
   &--list {
     flex: 1 1 auto;
 
     align-items: center;
     .card {
       // width: 300px;
-      height: 100%;
+      // height: 100%;
+
       overflow: hidden;
     }
   }
@@ -42,7 +49,7 @@
     align-items: flex-start;
     .card {
       min-width: 200px;
-      height: 100%;
+      // height: 100%;
       overflow: hidden;
       margin-left: 1rem;
     }
@@ -51,7 +58,7 @@
   &--chat {
     display: none;
     .card {
-      height: 100%;
+      // height: 100%;
       overflow: hidden;
     }
   }

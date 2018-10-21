@@ -58,7 +58,11 @@ export const getUsersCurrentUser = createSelector(getUsersEntities, getUsersCurr
 });
 
 export const getUsersFetched = createSelector(getUsersEntities, getUsersCurrentUserId, (entities, curentId) => {
-  return Object.values(entities).filter(user => user.login !== curentId);
+  // return Object.values(entities).filter(user => user.login !== curentId);
+  return Object.keys(entities).map(function(e) {
+    return entities[e];
+  })
+  .filter(user => user.login !== curentId);
 });
 
 
@@ -70,12 +74,24 @@ export const getMessagesFetching = createSelector(getMessagesState, fromMessages
 
 export const isSelectedUserhasMessages = createSelector(getMessagesEntities, getUsersSelectedId,
   (messages, ofUser) => {
-  return Object.values(messages).map( message => message.author).indexOf(ofUser) > -1;
+  // return Object.values(messages).map( message => message.author).indexOf(ofUser) > -1;
+  return Object.keys(messages)
+    .map(function(e) {
+      return messages[e];
+    })
+    .map( message => message.author)
+    .indexOf(ofUser) > -1;
 });
 
 export const getMessageIdsOfSelectedUser = createSelector(getMessagesEntities, getUsersSelectedId,
   (messages, ofUser) => {
-  return Object.values(messages).filter( message => message.conversation === ofUser).map( message => message.id);
+  // return Object.values(messages).filter( message => message.conversation === ofUser).map( message => message.id);
+  return Object.keys(messages)
+      .map(function(e) {
+        return messages[e];
+      })
+      .filter( message => message.conversation === ofUser )
+      .map( message => message.id);
 });
 
 export const getMessagesOfSelectedUser =

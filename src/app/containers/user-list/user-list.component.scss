@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
+
+  min-height: 0px;
+
   margin-top: 1rem;
   margin-bottom: 1rem;
 
@@ -17,7 +20,8 @@
 
       .card {
         width: 300px;
-        height: 100%;
+        // height: 100%;
+        height: 800px;
         overflow: hidden;
       }
 
@@ -33,7 +37,8 @@
 
       .card {
         width: 300px;
-        height: 100%;
+        // height: 100%;
+        height: 800px;
         overflow: hidden;
         margin-right: 1rem;
       }
@@ -43,13 +48,15 @@
       align-items: start;
 
       .card {
-        height: 100%;
+        // height: 100%;
+        height: 800px;
         overflow: hidden;
         margin-left: 1rem;
 
 
         .card-header {
-          padding: 1.96rem;
+          // padding: 1.96rem;
+          min-height: 48px;
 
           .msgr-user-list-header {
             display: none;

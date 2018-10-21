@@ -1,14 +1,14 @@
 :host {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-  height: 100%;
-  width: 100%;
-  // height: 100vh;
+  // min-height: 100%;
+  // height: 100%;
+  // width: 100%;
+  height: 75vh;
   // min-height: 100vh;
 }
 
-// .fill {
-//   height: 90%;
-
-// }
+.msgr-nav {
+  // height: 50px;
+  margin-bottom: 50px;
+}
