@@ -1,4 +1,4 @@
-<div *ngIf="message"  class="msgr-message-card card">
+<div *ngIf="message" [ngClass]="{fromCurrent: messageOfCurrentUser}" class="msgr-message-card card">
 <div class="media">
   <img class="d-flex m-1 mr-3" src="{{ authorsAvatar }}" alt="authorsName">
 

@@ -3,6 +3,7 @@ img {
   width: 50px;
 }
 .msgr-message-card {
+  margin-right: 5rem;
   margin-bottom: 0.5rem;
 
   .msgr-message-body{
@@ -25,7 +26,11 @@ img {
 }
 
 
-
+.fromCurrent {
+  background-color: rgb(188, 236, 188);
+  margin-left: 5rem;
+  margin-right: 0 !important;
+}
 
 
 

@@ -5,7 +5,7 @@
         <div class="msgr-chat-messages-header card-header">
             <h5 class="msgr-chat-messages-header-name text-secondary mt-1">{{name$ | async}}</h5>
         </div>
-        <div class="msgr-chat-messages-body card-body">
+        <div  #scrollMe class="msgr-chat-messages-body card-body">
           <!-- <perfect-scrollbar> -->
             <msg-message *ngFor="let message of messages$ | async" [message]="message"></msg-message>
           <!-- </perfect-scrollbar> -->

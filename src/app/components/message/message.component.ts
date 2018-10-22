@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { Message, MessageExt, User } from './../../models';
+import { MessageExt} from './../../models';
 
 @Component({
   selector: 'msg-message',
@@ -30,6 +30,10 @@ export class MessageComponent implements OnInit {
 
   get authorsAvatar() {
     return this.message  && this.message.author.avatar_url;
+  }
+
+  get messageOfCurrentUser() {
+    return this.message && this.message.author.login !== this.message.conversation.login;
   }
 
 }

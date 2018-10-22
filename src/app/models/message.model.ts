@@ -5,10 +5,11 @@ export interface Message {
   id: string;
   author: string | User;
   text: string;
-  conversation: string;
+  conversation: string | User;
   createdAt: string;
 }
 
 export interface MessageExt extends Message {
   author: User;
+  conversation: User;
 }
