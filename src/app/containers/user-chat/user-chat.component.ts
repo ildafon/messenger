@@ -78,7 +78,7 @@ export class UserChatComponent implements OnInit, AfterViewChecked, OnDestroy {
   // conversation: string | User;
   // createdAt: string;
   onNewMessage(messageText) {
-    console.log(messageText);
+
     const messageToSend: Message = {
       id: uuid(),
       author: this.currentUserId,
@@ -86,9 +86,10 @@ export class UserChatComponent implements OnInit, AfterViewChecked, OnDestroy {
       conversation: this.conversation,
       createdAt: new Date()
     };
-
+    this.disableScrollDown = false;
 
     this.store.dispatch(new actions.SendMessageAction(messageToSend));
+    // this.scrollToBottom();
   }
 
   ngOnDestroy() {
