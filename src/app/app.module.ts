@@ -6,6 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterStoreModule } from '@ngrx/router-store';
@@ -49,6 +52,7 @@ import { SelectedUserComponent } from './containers/selected-user/selected-user.
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { MessageComponent } from './components/message/message.component';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
+import { NewMessageFormComponent } from './components/new-message-form/new-message-form.component';
 
 
 
@@ -67,13 +71,15 @@ import { EllipsisPipe } from './pipes/ellipsis.pipe';
     SelectedUserComponent,
     SpinnerComponent,
     MessageComponent,
-    EllipsisPipe
+    EllipsisPipe,
+    NewMessageFormComponent
   ],
   imports: [
     CommonModule,
     HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
 
     StoreModule.provideStore(reducer),

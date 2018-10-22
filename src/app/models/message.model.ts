@@ -6,7 +6,7 @@ export interface Message {
   author: string | User;
   text: string;
   conversation: string | User;
-  createdAt: string;
+  createdAt: string | Date;
 }
 
 export interface MessageExt extends Message {
