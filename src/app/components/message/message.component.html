@@ -13,7 +13,7 @@
       </div>
     </perfect-scrollbar>
 
-    <span class="msgr-message-date badge badge-light">{{messageDate | date:'medium' }}</span>
+    <span [ngClass]="{badgeCurrent: messageOfCurrentUser}" class="msgr-message-date badge badge-light">{{messageDate | date:'medium' }}</span>
   </div>
 
 </div>

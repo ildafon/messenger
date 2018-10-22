@@ -15,7 +15,7 @@ import { MessageExt } from './../../models/message.model';
 })
 export class UserChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
-
+  disableScrollDown = false;
 
   name$: Observable<string>;
   messages$: Observable<any>;
@@ -28,15 +28,29 @@ export class UserChatComponent implements OnInit, AfterViewChecked {
     this.messages$ = this.store.select(fromRoot.getMessagesOfSelectedUser);
     // this.messages$ = this.store.select(fromRoot.getMessageIdsOfSelectedUser);
 
-    this.scrollToBottom();
+    // this.scrollToBottom();
   }
 
   ngAfterViewChecked() {
     this.scrollToBottom();
   }
 
+  private onScroll() {
+    const element = this.myScrollContainer.nativeElement;
+    const atBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
+    if (this.disableScrollDown && atBottom) {
+        this.disableScrollDown = false;
+    } else {
+        this.disableScrollDown = true;
+    }
+}
+
+
 // https://stackoverflow.com/questions/35232731/angular2-scroll-to-bottom-chat-style
   scrollToBottom(): void {
+    if (this.disableScrollDown) {
+      return;
+  }
     try {
       this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
     } catch (err) {}
