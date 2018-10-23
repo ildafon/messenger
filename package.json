@@ -21,8 +21,6 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
-    "@fortawesome/free-brands-svg-icons": "^5.4.1",
-    "@fortawesome/free-regular-svg-icons": "^5.4.1",
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.3",
     "@ngrx/router-store": "^1.2.6",
