@@ -7,6 +7,7 @@ import * as fromRoot from './reducers';
 import * as users from './actions/users.actions';
 import * as messages from './actions/messages.actions';
 
+
 @Component({
   selector: 'msg-root',
   templateUrl: './app.component.html',
@@ -19,13 +20,9 @@ export class AppComponent  implements OnInit {
    private router: Router
     ) {
     store.dispatch(new users.CurrentUserAction('ildafon'));
-    store.dispatch(new users.FetchAction);
-    store.dispatch(new messages.FetchMessagesAction());
   }
 
   ngOnInit() {
-    // this.value$ = this.store.select(fromRoot.getAuthorOfMessage('ry'));
-
   }
 
   toUserList() {

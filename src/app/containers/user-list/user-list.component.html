@@ -9,14 +9,14 @@
                   <input class="form-control mr-sm-2" type="text" placeholder="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form> -->
-                <h5 class="msgr-user-list-header text-secondary mt-1">Список пользователей</h5>
+                <h5 class="msgr-user-list-header text-secondary mt-1">&nbsp;</h5>
           </div>
 
 
           <perfect-scrollbar class="container">
             <ul class="nav flex-column">
 
-                  <msg-user-list-item *ngFor="let user of users$ | async"  [user]="user" [ngClass]="showState$ | async"></msg-user-list-item>
+                  <msg-user-list-item *ngFor="let user of users$ | async" [user]="user" [ngClass]="showState$ | async"></msg-user-list-item>
 
             </ul>
           </perfect-scrollbar>
@@ -25,5 +25,5 @@
 
 
 
-<router-outlet></router-outlet>
+<router-outlet #oDetail="outlet"></router-outlet>
 

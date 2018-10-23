@@ -6,7 +6,7 @@
   min-height: 0px;
 
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
 
   .show-state {
     display: flex;
@@ -53,15 +53,6 @@
         overflow: hidden;
         margin-left: 1rem;
 
-
-        .card-header {
-          // padding: 1.96rem;
-          min-height: 48px;
-
-          .msgr-user-list-header {
-            display: none;
-          }
-        }
 
 
       }

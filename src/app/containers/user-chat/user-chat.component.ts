@@ -35,6 +35,8 @@ export class UserChatComponent implements OnInit, AfterViewChecked, OnDestroy {
 
 
   constructor(private store: Store<fromRoot.State>) {
+    store.dispatch(new actions.FetchMessagesAction());
+
    }
 
   ngOnInit() {

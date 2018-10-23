@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterStoreModule } from '@ngrx/router-store';
@@ -33,7 +34,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 import { ApiService } from './services/api.service';
 import { NormalizationService } from './services/normalization.service';
-import { ShowStateService } from './services/show-state.service';
+
 
 import { UsersEffects } from './effects/users';
 import { MessagesEffects } from './effects/messages';
@@ -91,8 +92,7 @@ import { NewMessageFormComponent } from './components/new-message-form/new-messa
   ],
   providers: [
     ApiService,
-    NormalizationService,
-    ShowStateService
+    NormalizationService
   ],
   bootstrap: [AppComponent]
 })
