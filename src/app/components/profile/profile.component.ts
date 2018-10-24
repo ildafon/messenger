@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { User } from './../../models/user.model';
 @Component({
   selector: 'msg-profile',
@@ -34,4 +34,5 @@ export class ProfileComponent implements OnInit {
   get blog() {
     return this.user && this.user.blog;
   }
+
 }

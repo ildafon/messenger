@@ -21,16 +21,16 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   actionsSubscription: Subscription;
 
   constructor(
-          private store: Store<fromRoot.State>,
-          private route: ActivatedRoute,
-          private router: Router) {
-    this.actionsSubscription = route.params
-      .select<string>('id')
-      .map(id => {
-        this.userId = id;
-        return new user.SelectAction(id);
-      })
-      .subscribe(store);
+    private store: Store<fromRoot.State>,
+    private route: ActivatedRoute,
+    private router: Router) {
+      this.actionsSubscription = route.params
+        .select<string>('id')
+        .map(id => {
+          this.userId = id;
+          return new user.SelectAction(id);
+        })
+        .subscribe(store);
 
    }
 

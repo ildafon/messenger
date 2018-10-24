@@ -8,11 +8,11 @@
     <perfect-scrollbar class="container">
       <div class="card-body">
 
-        <msg-selected-user ></msg-selected-user>
+        <msg-selected-user (chat)="startChat()"></msg-selected-user>
 
       </div>
     </perfect-scrollbar>
-    <msg-start-chat-button class="msgr-start-chat-button" (click)="startChat()"></msg-start-chat-button>
+
   </div>
 
 </div>

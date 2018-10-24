@@ -1,9 +1,31 @@
+<div *ngIf="!user" class="msgr-spinner-wrapper d-flex justify-content-center align-items-center">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-secondary"></i>
+    <span class="sr-only">Loading...</span>
+</div>
 <div *ngIf="user" class="card">
   <img class="card-img-top" src="{{ avatar }}" alt="name">
-  <div class="card-body">
-    <h4 class="card-title">{{name | msgrEllipsis:25}}</h4>
-    <p class="card-text">{{location | msgrEllipsis:40}}</p>
-    <p class="card-text">{{company | msgrEllipsis:40}}</p>
-    <p class="card-text">{{blog | msgrEllipsis:40}}</p>
+  <div class="msgr-user-profile-body card-body">
+    <h4 class="card-title pl-2">{{name | msgrEllipsis:25}}</h4>
+    <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td  style="width: 1.66%"><i class="fa fa-map-marker text-info fa-2x" aria-hidden="true"></i></td>
+            <td  style="width: 26.66%"><p class="font-weight-bold">{{location | msgrEllipsis:40}}</p></td>
+          </tr>
+          <tr>
+              <!-- <th scope="row">2</th> -->
+              <td><i class="fa fa-building-o text-info fa-2x" aria-hidden="true"></i></td>
+              <td><p class="font-weight-bold">{{company | msgrEllipsis:40}}</p></td>
+            </tr>
+            <tr>
+                <!-- <th scope="row">2</th> -->
+                <td><i class="fa fa-globe text-info fa-2x" aria-hidden="true"></i></td>
+                <td><p class="font-weight-bold">{{blog | msgrEllipsis:40}}</p></td>
+              </tr>
+        </tbody>
+      </table>
+
+   <ng-content></ng-content>
   </div>
 </div>
+
