@@ -7,6 +7,7 @@ import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/mapTo';
+import 'rxjs/add/operator/delay';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
@@ -70,6 +71,7 @@ export class UsersEffects {
   @Effect()
   retrieve$ = this.actions$
   .ofType(users.RETRIEVE_USER)
+  .delay(1000)
   .switchMap( (action) => {
     return this.api.retrieveUser(action.payload)
       .map(res => new users.RetrieveUserSuccessAction(res))
