@@ -1,5 +1,5 @@
 <msg-navbar class="msgr-nav">
-  <msg-navbar-menu-button (click)="toUserList()"></msg-navbar-menu-button>
+  <msg-navbar-menu-button [ngClass]="showState$ | async" (click)="toUserList()"></msg-navbar-menu-button>
 </msg-navbar>
 <div class="d-flex bg-light flex-grow-1">
     <router-outlet></router-outlet>

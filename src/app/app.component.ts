@@ -15,11 +15,14 @@ import * as messages from './actions/messages.actions';
 })
 export class AppComponent  implements OnInit {
   value$: Observable<User>;
+  showState$: Observable<string>;
+
   constructor (
    private store: Store<fromRoot.State>,
    private router: Router
     ) {
     store.dispatch(new users.CurrentUserAction('ildafon'));
+    this.showState$ = this.store.select(fromRoot.getShowState);
   }
 
   ngOnInit() {
