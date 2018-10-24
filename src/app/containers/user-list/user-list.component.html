@@ -16,7 +16,7 @@
           <perfect-scrollbar class="container">
             <ul class="nav flex-column">
 
-                  <msg-user-list-item *ngFor="let user of users$ | async" [user]="user" [ngClass]="showState$ | async"></msg-user-list-item>
+                  <msg-user-list-item *ngFor="let user of users$ | async; trackBy: trackByFn" [user]="user" [ngClass]="showState$ | async"></msg-user-list-item>
 
             </ul>
           </perfect-scrollbar>

@@ -27,4 +27,8 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
   }
 
+  trackByFn(index, item) {
+    return item.id;
+ }
+
 }

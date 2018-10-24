@@ -37,10 +37,12 @@ export function reducer(state: any, action: any) {
 }
 
 export const getUsersState = (state: State) => state.users;
+export const getUsersIds = createSelector(getUsersState, fromUsers.getIds);
 export const getUsersEntities = createSelector(getUsersState, fromUsers.getEntities);
 export const getUsersRetrievedIds = createSelector(getUsersState, fromUsers.getRetrievedIds);
 export const getUsersSelectedId = createSelector(getUsersState, fromUsers.getSelectedId);
 export const getUsersFetching = createSelector(getUsersState, fromUsers.getFetching);
+export const getUsersRetrieving = createSelector(getUsersState, fromUsers.getRetrieving);
 
 
 
@@ -57,11 +59,12 @@ export const getUsersCurrentUser = createSelector(getUsersEntities, getUsersCurr
   return entities[currentUserId];
 });
 
-export const getUsersFetched = createSelector(getUsersEntities, getUsersCurrentUserId, (entities, curentId) => {
-  // return Object.values(entities).filter(user => user.login !== curentId);
-  return Object.keys(entities).map(function(e) {
-    return entities[e];
-  })
+export const getUsersFetched = createSelector(getUsersEntities, getUsersIds, getUsersCurrentUserId, (entities, ids, curentId) => {
+  // return Object.values(entities)
+  // return Object.keys(entities).map(function(e) {
+  //   return entities[e];
+  // })
+  return ids.map(id => entities[id])
   .filter(user => user.login !== curentId);
 });
 

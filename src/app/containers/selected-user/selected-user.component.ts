@@ -9,7 +9,7 @@ import { relative } from 'path';
   selector: 'msg-selected-user',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-  <msg-profile [user]="user$ | async" class="">
+  <msg-profile [user]="user$ | async" [retrieving]="retrieving$ | async">
     <msg-start-chat-button class="msgr-start-chat-button" (click)="startChat()"></msg-start-chat-button>
   </msg-profile>
   `,
@@ -27,10 +27,12 @@ import { relative } from 'path';
 })
 export class SelectedUserComponent implements OnInit {
   user$: Observable<User>;
+  retrieving$: Observable<boolean>;
   @Output() chat = new EventEmitter();
 
   constructor(private store: Store<fromRoot.State>) {
     this.user$ = this.store.select(fromRoot.getUsersSelectedUser);
+    this.retrieving$ = this.store.select(fromRoot.getUsersRetrieving);
   }
 
   ngOnInit() {

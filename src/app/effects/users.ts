@@ -46,9 +46,7 @@ export class UsersEffects {
     if (alreadyRetrieved) {
       return empty();
     } else {
-    return this.api.retrieveUser(action.payload)
-      .map(res => new users.RetrieveUserSuccessAction(res))
-      .catch(() => of(new users.RetrieveUserFailAction('error')));
+     return of(new users.RetrieveUserAction(action.payload));
     }
   });
 
@@ -72,10 +70,12 @@ export class UsersEffects {
   @Effect()
   retrieve$ = this.actions$
   .ofType(users.RETRIEVE_USER)
-  .map( action => action.payload )
-  .map( payload => {
-    return new users.SelectAction(payload);
+  .switchMap( (action) => {
+    return this.api.retrieveUser(action.payload)
+      .map(res => new users.RetrieveUserSuccessAction(res))
+      .catch(() => of(new users.RetrieveUserFailAction('error')));
   });
+
 
 
   constructor(

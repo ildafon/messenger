@@ -9,6 +9,7 @@ import { User } from './../../models/user.model';
 })
 export class ProfileComponent implements OnInit {
   @Input() user: User;
+  @Input() retrieving: boolean;
 
   constructor() { }
 
