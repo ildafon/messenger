@@ -2,7 +2,7 @@
     <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-secondary"></i>
     <span class="sr-only">Loading...</span>
 </div>
-<div *ngIf="!retrieving && user" class="card">
+<div *ngIf="!retrieving" class="card">
   <img class="card-img-top" src="{{ avatar }}" alt="name" height="436" width="436">
   <div class="msgr-user-profile-body card-body">
     <h4 class="card-title pl-2">{{name | msgrEllipsis:25}}</h4>

@@ -53,7 +53,7 @@ export class UserChatComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.scrollToBottom();
   }
 
-  private onScroll() {
+  onScroll() {
     const element = this.myScrollContainer.nativeElement;
     const atBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
     if (this.disableScrollDown && atBottom) {
